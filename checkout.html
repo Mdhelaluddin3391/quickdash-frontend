@@ -5,178 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout - QuickDash</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
     <link rel="stylesheet" href="assets/css/checkout_style.css">
-
-
 </head>
 <body>
-
     <header class="site-header">
         <div class="container header-container">
-            <a href="cart.html" class="back-link">
-                <i class="fas fa-arrow-left"></i>
-                Back to Cart
-            </a>
+            <a href="cart.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Cart</a>
             <div class="logo">Checkout</div>
         </div>
     </header>
 
     <main class="container">
         <div class="checkout-layout">
-
             <div class="checkout-details">
-
                 <section class="checkout-section">
                     <h2 class="section-title">Delivery Address</h2>
-                    
-                    <div class="address-card selected">
-                        <div class="address-radio">
-                            <input type="radio" id="addr1" name="delivery_address" checked>
-                            <label for="addr1"></label>
-                        </div>
-                        <div class="address-details">
-                            <span class="address-tag">Home</span>
-                            <p class="address-name">Rohan Sharma</p>
-                            <p class="address-full">123, Sunrise Apartments, Opp. City Mall, Dharmanagar - 799250</p>
-                            <p class="address-phone">Phone: +91 9876543210</p>
-                        </div>
-                        <a href="#" class="edit-btn">Edit</a>
-                    </div>
-
-                    <div class="address-card">
-                        <div class="address-radio">
-                            <input type="radio" id="addr2" name="delivery_address">
-                            <label for="addr2"></label>
-                        </div>
-                        <div class="address-details">
-                            <span class="address-tag">Work</span>
-                            <p class="address-name">Rohan Sharma</p>
-                            <p class="address-full">QuickDash Office, Tech Park, Agartala - 799001</p>
-                            <p class="address-phone">Phone: +91 9876543210</p>
-                        </div>
-                        <a href="#" class="edit-btn">Edit</a>
-                    </div>
-                    
-                    <button class="add-new-address-btn">
-                        <i class="fas fa-plus"></i>
-                        Add New Address
-                    </button>
+                    <button class="add-new-address-btn"><i class="fas fa-plus"></i> Add New Address</button>
                 </section>
 
                 <section class="checkout-section">
                     <h2 class="section-title">Payment Method</h2>
-                    
                     <div class="payment-option selected">
                         <input type="radio" id="payment_cod" name="payment_method" checked>
                         <label for="payment_cod">
                             <i class="fas fa-money-bill-wave"></i>
-                            <span>
-                                <strong>Cash on Delivery (COD)</strong>
-                                <small>Pay at your doorstep</small>
-                            </span>
+                            <span><strong>Cash on Delivery (COD)</strong></span>
                         </label>
                     </div>
-
                     <div class="payment-option">
-                        <input type="radio" id="payment_upi" name="payment_method">
-                        <label for="payment_upi">
-                            <i class="fab fa-google-pay"></i>
-                            <span>
-                                <strong>UPI / Wallets</strong>
-                                <small>PhonePe, Google Pay, Paytm</small>
-                            </span>
-                        </label>
-                    </div>
-
-                    <div class="payment-option">
-                        <input type="radio" id="payment_card" name="payment_method">
-                        <label for="payment_card">
+                        <input type="radio" id="payment_online" name="payment_method">
+                        <label for="payment_online">
                             <i class="fas fa-credit-card"></i>
-                            <span>
-                                <strong>Credit / Debit Card</strong>
-                                <small>Visa, Mastercard, RuPay</small>
-                            </span>
+                            <span><strong>Pay Online (Razorpay)</strong></span>
                         </label>
                     </div>
-
-                    <div class="payment-option">
-                        <input type="radio" id="payment_netbanking" name="payment_method">
-                        <label for="payment_netbanking">
-                            <i class="fas fa-university"></i>
-                            <span>
-                                <strong>Net Banking</strong>
-                                <small>All major banks supported</small>
-                            </span>
-                        </label>
-                    </div>
-
                 </section>
-
             </div>
 
             <div class="order-summary-container">
                 <h2>Order Summary</h2>
-                
-                <div class="savings-badge">
-                    <i class="fas fa-tag"></i>
-                    <span>You're saving ₹10 on this order!</span>
-                </div>
-                
-                <div class="summary-items-list">
-                    <div class="summary-item">
-                        <span class="item-name">Fresh Milk 500ml (x1)</span>
-                        <span class="item-price">₹28.00</span>
-                    </div>
-                    <div class="summary-item">
-                        <span class="item-name">Banana (Dozen) (x2)</span>
-                        <span class="item-price">₹100.00</span>
-                    </div>
-                    <div class="summary-item">
-                        <span class="item-name">Greek Yogurt 200g (x1)</span>
-                        <span class="item-price">₹90.00</span>
-                    </div>
-                </div>
-
+                <div class="summary-items-list"></div>
                 <div class="summary-divider"></div>
-
-                <div class="summary-row">
-                    <span>Subtotal (4 items)</span>
-                    <span id="summary-subtotal">₹218.00</span>
-                </div>
-                
-                <div class="summary-row">
-                    <span>Delivery Fee</span>
-                    <span id="summary-delivery" class="text-green">FREE</span>
-                </div>
-
-                <div class="summary-row">
-                    <span>Handling Fee</span>
-                    <span id="summary-handling">₹5.00</span>
-                </div>
-                
-                <div class="summary-divider"></div>
-
-                <div class="summary-row total">
-                    <span>To Pay</span>
-                    <span id="summary-total">₹223.00</span>
-                </div>
-
-                <a href="order_success.html" class="place-order-button">
-                    <i class="fas fa-lock"></i> Place Order
-                </a>
-                
-                <div class="security-note">
-                    <i class="fas fa-shield-alt"></i> Secure checkout · 100% protected
-                </div>
+                <div class="summary-row total"><span>To Pay</span><span id="summary-total">...</span></div>
+                <button class="place-order-button"><i class="fas fa-lock"></i> Place Order</button>
             </div>
         </div>
     </main>
 
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-<script src="assets/js/utils/api.js"></script>
-<script src="assets/js/utils/checkout.js"></script>
-<script src="assets/js/pages/checkout.js"></script>
-
-</body>
+    <script src="assets/js/utils/api.js"></script>
+    <script src="assets/js/utils/checkout.js"></script> <script src="assets/js/pages/checkout.js"></script> </body>
 </html>

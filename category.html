@@ -4,82 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vegetables - QuickDash</title>
-    <link rel="stylesheet" href="category_list_style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="assets/css/category_list_style.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-
     <header class="site-header">
         <div class="container header-container">
-            <a href="index.html" class="back-link">
-                <i class="fas fa-arrow-left"></i>
-                Home
-            </a>
+            <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Home</a>
             <div class="logo">QuickDash</div>
-            <a href="cart.html" class="cart-link" title="Cart">
-                <i class="fas fa-shopping-cart"></i>
-            </a>
-        </div>
-        <div class="search-bar-wrapper">
-            <form class="search-bar" method="GET" action="#">
-                <input type="text" name="q" placeholder="Search in Vegetables..." value="">
-            </form>
+            <a href="cart.html" class="cart-link" title="Cart"><i class="fas fa-shopping-cart"></i></a>
         </div>
     </header>
 
     <main class="container">
-        
         <h1 class="main-category-title">All Vegetables</h1>
-        <p class="category-description">Fresh, quality vegetables delivered to your doorstep in minutes!</p>
-
         <div class="subcategory-grid">
             <a href="category_detail.html" class="subcategory-card">
-                <div class="image-wrapper">
-                    <img src="https://via.placeholder.com/150/D4F0C2/3E8009?text=Leafy" alt="Leafy Greens">
-                </div>
-                <div class="card-details">
-                    <h3>Leafy Greens</h3>
-                    <p>Spinach, Methi, Coriander...</p>
-                </div>
-                <i class="fas fa-chevron-right"></i>
+                <div class="card-details"><h3>Leafy Greens</h3></div><i class="fas fa-chevron-right"></i>
             </a>
-            <a href="category_detail.html" class="subcategory-card">
-                <div class="image-wrapper">
-                    <img src="https://via.placeholder.com/150/FFDDC1/8B4513?text=Root" alt="Root Vegetables">
-                </div>
-                <div class="card-details">
-                    <h3>Root Vegetables</h3>
-                    <p>Potato, Onion, Carrot, Radish...</p>
-                </div>
-                <i class="fas fa-chevron-right"></i>
-            </a>
-            <a href="category_detail.html" class="subcategory-card">
-                <div class="image-wrapper">
-                    <img src="https://via.placeholder.com/150/FFFACD/FFD700?text=Exotic" alt="Exotic Veggies">
-                </div>
-                <div class="card-details">
-                    <h3>Exotic Veggies</h3>
-                    <p>Broccoli, Zucchini, Bell Peppers...</p>
-                </div>
-                <i class="fas fa-chevron-right"></i>
-            </a>
-            <a href="category_detail.html" class="subcategory-card">
-                <div class="image-wrapper">
-                    <img src="https://via.placeholder.com/150/E0BBE4/9575CD?text=Beans" alt="Gourds & Beans">
-                </div>
-                <div class="card-details">
-                    <h3>Gourds & Beans</h3>
-                    <p>Lady Finger, Green Beans, Tomato...</p>
-                </div>
-                <i class="fas fa-chevron-right"></i>
-            </a>
-
             </div>
-
     </main>
-<script src="assets/js/utils/api.js"></script>
-<script src="assets/js/pages/cart.js"></script>
-</body>
+
+    <script src="assets/js/utils/api.js"></script>
+    <script src="assets/js/pages/cart.js"></script> </body>
 </html>

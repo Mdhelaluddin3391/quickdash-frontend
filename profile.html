@@ -5,225 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Profile - QuickDash</title>
     <link rel="stylesheet" href="assets/css/profile_style.css">
-<link rel="stylesheet" href="assets/css/profile_additions.css">
-
+    <link rel="stylesheet" href="assets/css/profile_additions.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-
     <header class="site-header">
         <div class="container header-container">
-            <a href="index.html" class="back-link">
-                <i class="fas fa-arrow-left"></i>
-                Home
-            </a>
+            <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Home</a>
             <div class="logo">My Profile</div>
-            <a href="#" class="logout-link" title="Logout">
-                <i class="fas fa-sign-out-alt"></i>
-            </a>
+            <a href="#" class="logout-link" title="Logout"><i class="fas fa-sign-out-alt"></i></a>
         </div>
     </header>
 
     <main class="container">
-        
         <div class="profile-layout">
-            
             <aside class="sidebar">
                 <div class="user-info">
-                    <div class="user-avatar">R</div>
-                    <p class="user-name">Rohan Sharma</p>
-                    <p class="user-phone">+91 9876543210</p>
+                    <div class="user-avatar">U</div>
+                    <p class="user-name">Loading...</p>
+                    <p class="user-phone">...</p>
                 </div>
-
                 <nav class="profile-nav">
                     <ul>
-                        <li class="active" data-content="orders">
-                            <a href="#"><i class="fas fa-receipt"></i> Order History</a>
-                        </li>
-                        <li data-content="addresses">
-                            <a href="#"><i class="fas fa-map-marker-alt"></i> Saved Addresses</a>
-                        </li>
-                        <li data-content="payments">
-                            <a href="#"><i class="fas fa-credit-card"></i> Payment Methods</a>
-                        </li>
-                        <li>
-                            <a href="support.html"><i class="fas fa-headset"></i> Customer Support</a>
-                        </li>
-                        <li data-content="settings">
-                            <a href="#"><i class="fas fa-cog"></i> Settings</a>
-                        </li>
+                        <li class="active" data-content="orders"><a href="#"><i class="fas fa-receipt"></i> Order History</a></li>
+                        <li data-content="addresses"><a href="#"><i class="fas fa-map-marker-alt"></i> Saved Addresses</a></li>
+                        <li data-content="settings"><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
                     </ul>
                 </nav>
             </aside>
 
             <div class="content-area">
-                
                 <div id="orders" class="profile-content-section active">
                     <h2 class="content-title">Order History</h2>
-                    
-                    <div class="order-card completed">
-                        <div class="order-header">
-                            <span class="order-id">#QD1209384</span>
-                            <span class="order-status">Delivered</span>
-                        </div>
-                        <div class="order-details">
-                            <p><strong>Items:</strong> Milk, Banana, Choco Cookies (+1 other item)</p>
-                            <p><strong>Date:</strong> 10 Nov 2025</p>
-                            <p><strong>Total:</strong> ₹133.00</p>
-                        </div>
-                        <div class="order-actions">
-                            <button class="btn btn-secondary btn-rate" data-order-id="QD1209384">
-                                <i class="fas fa-star"></i> Rate
-                            </button>
-                            <button class="btn btn-primary">Reorder</button>
-                        </div>
                     </div>
-
-                    <div class="order-card pending">
-                        <div class="order-header">
-                            <span class="order-id">#QD1209385</span>
-                            <span class="order-status">Processing</span>
-                        </div>
-                        <div class="order-details">
-                            <p><strong>Items:</strong> Fresh Apple, Broccoli (2 items)</p>
-                            <p><strong>Date:</strong> 11 Nov 2025</p>
-                            <p><strong>Total:</strong> ₹165.00</p>
-                        </div>
-                        <div class="order-actions">
-                            <a href="track_order.html" class="btn btn-primary">Track Order</a>
-                            <button class="btn btn-secondary">Cancel</button>
-                        </div>
-                    </div>
-                </div>
 
                 <div id="addresses" class="profile-content-section">
                     <h2 class="content-title">Saved Addresses</h2>
-                    <div class="address-list">
-                        <div class="address-card-profile default">
-                            <span class="address-tag">Home</span>
-                            <p class="address-name">Rohan Sharma</p>
-                            <p class="address-full">123, Sunrise Apartments, Opp. City Mall, Dharmanagar - 799250</p>
-                            <p class="address-phone">Phone: +91 9876543210</p>
-                            <div class="address-actions">
-                                <button class="btn-icon"><i class="fas fa-edit"></i> Edit</button>
-                                <button class="btn-icon btn-danger"><i class="fas fa-trash"></i> Delete</button>
-                                <span class="default-badge"><i class="fas fa-check"></i> Default</span>
-                            </div>
-                        </div>
-                        <div class="address-card-profile">
-                            <span class="address-tag">Work</span>
-                            <p class="address-name">Rohan Sharma</p>
-                            <p class="address-full">QuickDash Office, Tech Park, Agartala - 799001</p>
-                            <p class="address-phone">Phone: +91 9876543210</p>
-                            <div class="address-actions">
-                                <button class="btn-icon"><i class="fas fa-edit"></i> Edit</button>
-                                <button class="btn-icon btn-danger"><i class="fas fa-trash"></i> Delete</button>
-                                <button class="btn btn-default">Set as Default</button>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="address-list"></div>
                     <button class="btn btn-primary add-address-btn" id="show-address-modal">
                         <i class="fas fa-plus"></i> Add New Address
                     </button>
                 </div>
-
-                <div id="payments" class="profile-content-section">
-                    <h2 class="content-title">Payment Methods</h2>
-                    <p>Feature coming soon. Aap checkout ke time par payment methods manage kar sakte hain.</p>
-                </div>
-
+                
                 <div id="settings" class="profile-content-section">
-                    <h2 class="content-title">Profile Settings</h2>
-                    <form class="profile-form">
-                        <div class="form-group">
-                            <label for="first-name">First Name</label>
-                            <input type="text" id="first-name" value="Rohan">
-                        </div>
-                        <div class="form-group">
-                            <label for="last-name">Last Name</label>
-                            <input type="text" id="last-name" value="Sharma">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" value="rohan.sharma@example.com">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Save Changes</button>
-                    </form>
-
-                    <div class="danger-zone">
-                        <h3 class_ ="danger-title">Delete Account</h3>
-                        <p>Yeh action permanent hai aur aapka saara data (past orders, addresses) delete kar dega.</p>
-                        <button class="btn btn-danger">Delete My Account</button>
-                    </div>
+                    <h2 class="content-title">Settings</h2>
+                    <p>Profile settings coming soon.</p>
                 </div>
-
             </div>
         </div>
-
     </main>
-
-    <div class="modal-overlay" id="rating-modal" style="display: none;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Rate your Delivery</h3>
-                <button class="modal-close" id="close-rating-modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p>How was your delivery for order <strong id="rate-order-id">#QD1209384</strong>?</p>
-                <form id="rating-form">
-                    <div class="rating-stars">
-                        <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5 stars"><i class="fas fa-star"></i></label>
-                        <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 stars"><i class="fas fa-star"></i></label>
-                        <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 stars"><i class="fas fa-star"></i></label>
-                        <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 stars"><i class="fas fa-star"></i></label>
-                        <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star"><i class="fas fa-star"></i></label>
-                    </div>
-                    <div class="form-group">
-                        <label for="rating-comment">Add a comment (Optional)</label>
-                        <textarea id="rating-comment" rows="3" placeholder="e.g., Rider was very fast and polite..."></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit Rating</button>
-                </form>
-            </div>
-        </div>
-    </div>
 
     <div class="modal-overlay" id="address-modal" style="display: none;">
         <div class="modal-content">
-            <div class="modal-header">
-                <h3>Add New Address</h3>
-                <button class="modal-close" id="close-address-modal">&times;</button>
-            </div>
+            <div class="modal-header"><h3>Add Address</h3><button class="modal-close" id="close-address-modal">&times;</button></div>
             <div class="modal-body">
                 <form id="address-form" class="profile-form">
-                    <div class="form-group">
-                        <label for="full-address">Full Address (House No, Street)</label>
-                        <textarea id="full-address" rows="3" required></textarea>
+                    <div class="form-group"><label>Full Address</label><textarea id="full-address" required></textarea></div>
+                    <div class="form-group"><label>City</label><input type="text" id="city" required></div>
+                    <div class="form-group"><label>Pincode</label><input type="text" id="pincode" required></div>
+                    <div class="form-group"><label>Type</label>
+                        <select id="address-type"><option value="HOME">Home</option><option value="WORK">Work</option></select>
                     </div>
-                    <div class="form-group">
-                        <label for="pincode">Pincode</label>
-                        <input type="text" id="pincode" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="city">City</label>
-                        <input type="text" id="city" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="address-type">Address Type</label>
-                        <select id="address-type">
-                            <option value="HOME">Home</option>
-                            <option value="WORK">Work</option>
-                            <option value="OTHER">Other</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Save Address</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
                 </form>
             </div>
         </div>
     </div>
-    
+
     <script src="assets/js/utils/api.js"></script>
-<script src="assets/js/utils/profile.js"></script>
-<script src="assets/js/pages/profile.js"></script>
-</body>
+    <script src="assets/js/utils/profile.js"></script> <script src="assets/js/pages/profile.js"></script> </body>
 </html>

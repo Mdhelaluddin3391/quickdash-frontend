@@ -5,162 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Cart - QuickDash</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
     <link rel="stylesheet" href="assets/css/cart_style.css">
-
-
 </head>
 <body>
-
     <header class="site-header">
         <div class="container header-container">
-            <a href="index.html" class="back-link">
-                <i class="fas fa-arrow-left"></i>
-                Continue Shopping
-            </a>
+            <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Continue Shopping</a>
             <div class="logo">QuickDash</div>
         </div>
     </header>
 
     <main class="container">
-        
         <h1>Your Cart</h1>
-
         <div class="cart-layout">
-
             <div class="cart-items-list">
                 <div class="cart-header">
                     <h2 class="cart-title">Items in your cart</h2>
-                    <span class="item-count">2 items</span>
-                </div>
-                
-                <div class="cart-item">
-                    <img src="https://images.unsplash.com/photo-1550583724-b2692b85b150?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Milk" class="item-image">
-                    <div class="item-details">
-                        <h3 class="item-name">Fresh Milk 500ml</h3>
-                        <p class="item-quantity-desc">Amul Taaza • Pasteurized</p>
-                        <p class="item-price-per-unit">₹28 per unit</p>
                     </div>
-                    <div class="item-controls">
-                        <div class="item-quantity-control">
-                            <button class="quantity-btn" aria-label="Decrease quantity">-</button>
-                            <span class="quantity-value">1</span>
-                            <button class="quantity-btn" aria-label="Increase quantity">+</button>
-                        </div>
-                        <div class="item-total-price">₹28</div>
-                        <button class="remove-item">
-                            <i class="fas fa-trash"></i> Remove
-                        </button>
-                    </div>
-                </div>
-
-                <div class="cart-item">
-                    <img src="https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Banana" class="item-image">
-                    <div class="item-details">
-                        <h3 class="item-name">Banana (Dozen)</h3>
-                        <p class="item-quantity-desc">Rich in potassium • Fresh</p>
-                        <p class="item-price-per-unit">₹50 per dozen</p>
-                    </div>
-                    <div class="item-controls">
-                        <div class="item-quantity-control">
-                            <button class="quantity-btn" aria-label="Decrease quantity">-</button>
-                            <span class="quantity-value">2</span>
-                            <button class="quantity-btn" aria-label="Increase quantity">+</button>
-                        </div>
-                        <div class="item-total-price">₹100</div>
-                        <button class="remove-item">
-                            <i class="fas fa-trash"></i> Remove
-                        </button>
-                    </div>
-                </div>
-
-                <div class="empty-cart-message">
+                <div class="empty-cart-message" style="display:none;">
                     <img src="https://cdn-icons-png.flaticon.com/512/11329/11329060.png" alt="Empty Cart">
                     <h3>Your cart is empty!</h3>
-                    <p>Looks like you haven't added anything to your cart yet. Explore our products and find something you like.</p>
-                    <a href="index.html" class="start-shopping-btn">
-                        <i class="fas fa-shopping-bag"></i> Start Shopping
-                    </a>
+                    <a href="index.html" class="start-shopping-btn"><i class="fas fa-shopping-bag"></i> Start Shopping</a>
                 </div>
-
             </div>
 
             <div class="order-summary-container">
                 <h2>Order Summary</h2>
-                
-                <div class="savings-badge">
-                    <i class="fas fa-tag"></i>
-                    <span>You're saving ₹10 on this order!</span>
-                </div>
-                
-                <div class="summary-row">
-                    <span>Subtotal (2 items)</span>
-                    <span id="summary-subtotal">₹128.00</span>
-                </div>
-                
-                <div class="summary-row">
-                    <span>Delivery Fee</span>
-                    <span id="summary-delivery">₹20.00</span>
-                </div>
-
-                <div class="summary-row">
-                    <span>Handling Fee</span>
-                    <span id="summary-handling">₹5.00</span>
-                </div>
-                
+                <div class="summary-row"><span>Subtotal</span><span id="summary-subtotal">₹0.00</span></div>
+                <div class="summary-row"><span>Delivery Fee</span><span id="summary-delivery">₹20.00</span></div>
                 <div class="summary-divider"></div>
-
-                <div class="summary-row total">
-                    <span>Total</span>
-                    <span id="summary-total">₹153.00</span>
-                </div>
-
-                <a href="checkout.html" class="checkout-button">
-                    <i class="fas fa-lock"></i> Proceed to Checkout
-                </a>
-                
-                <div class="summary-row" style="font-size: 0.8rem; color: var(--text-lighter); margin-top: 12px; text-align: center;">
-                    <i class="fas fa-shield-alt"></i> Secure checkout · 100% protected
-                </div>
+                <div class="summary-row total"><span>Total</span><span id="summary-total">₹0.00</span></div>
+                <a href="checkout.html" class="checkout-button"><i class="fas fa-lock"></i> Proceed to Checkout</a>
             </div>
         </div>
-        
-        <div class="continue-shopping">
-            <h3>Looking for more?</h3>
-            <p>Add more items to your cart from these categories</p>
-            <div class="category-grid">
-                <a href="index.html#fruits" class="category-item">
-                    <div class="category-icon">
-                        <i class="fas fa-apple-alt"></i>
-                    </div>
-                    <span class="category-name">Fruits</span>
-                </a>
-                <a href="index.html#vegetables" class="category-item">
-                    <div class="category-icon">
-                        <i class="fas fa-carrot"></i>
-                    </div>
-                    <span class="category-name">Vegetables</span>
-                </a>
-                <a href="index.html#dairy" class="category-item">
-                    <div class="category-icon">
-                        <i class="fas fa-cheese"></i>
-                    </div>
-                    <span class="category-name">Dairy</span>
-                </a>
-                <a href="index.html#beverages" class="category-item">
-                    <div class="category-icon">
-                        <i class="fas fa-wine-bottle"></i>
-                    </div>
-                    <span class="category-name">Beverages</span>
-                </a>
-            </div>
-        </div>
-
     </main>
 
-   <script src="assets/js/utils/api.js"></script>
-<script src="assets/js/utils/cart.js"></script>
-<script src="assets/js/pages/cart.js"></script>
-
-</body>
+    <script src="assets/js/utils/api.js"></script>
+    <script src="assets/js/utils/cart.js"></script> <script src="assets/js/pages/cart.js"></script> </body>
 </html>

@@ -1,359 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/index_style.css">
-
-    
     <title>QuickDash - Home</title>
-
-
 </head>
-
 <body>
-
     <header class="new-header">
         <div class="header-top-row">
             <div class="logo-location-group">
                 <a href="index.html" class="logo">
-                    <i class="fas fa-bolt"></i>
-                    <span>QuickDash</span>
+                    <i class="fas fa-bolt"></i><span>QuickDash</span>
                 </a>
                 <div class="location">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>Fastest Delivery • Dharmanagar</span>
+                    <i class="fas fa-map-marker-alt"></i><span>Fastest Delivery • Dharmanagar</span>
                 </div>
             </div>
-
             <div class="header-icons">
-                <a href="auth.html" class="icon-link">
-                    <i class="far fa-user"></i>
-                    <span class="icon-text">Account</span>
-                </a>
+                <a href="auth.html" class="icon-link"><i class="far fa-user"></i><span class="icon-text">Account</span></a>
                 <a href="cart.html" class="icon-link cart-link">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="icon-text">Cart</span>
-                    <span class="cart-count">0</span>
+                    <i class="fas fa-shopping-cart"></i><span class="icon-text">Cart</span><span class="cart-count">0</span>
                 </a>
             </div>
         </div>
-
-        <form class="search-bar-row" method="GET" action="#">
+        <form class="search-bar-row" method="GET" action="search_results.html">
             <i class="fas fa-search"></i>
             <input type="text" name="q" placeholder="Search for items..." value="">
         </form>
-
         <nav class="header-nav-row">
             <a href="index.html" class="nav-item active">All</a>
             <a href="category.html" class="nav-item">Groceries</a>
             <a href="category.html" class="nav-item">Vegetables</a>
-            <a href="category.html" class="nav-item">Snacks</a>
-            <a href="category.html" class="nav-item">Electronics</a>
-            <a href="category.html" class="nav-item">Personal Care</a>
-            <a href="category.html" class="nav-item">Dairy</a>
-            <a href="category.html" class="nav-item">Meat</a>
-        </nav>
+            </nav>
     </header>
 
     <section class="hero-section">
         <div class="scroll-banner">
             <a href="product.html" class="promo-card">
-                <div class="promo-content">
-                    <h3>Fresh Apples</h3>
-                    <p>Upto 30% OFF</p>
-                </div>
+                <div class="promo-content"><h3>Fresh Apples</h3><p>Upto 30% OFF</p></div>
                 <i class="fas fa-apple-alt promo-image"></i>
             </a>
             <a href="product.html" class="promo-card dark-theme">
-                <div class="promo-content">
-                    <h3>Snack Combo</h3>
-                    <p>Only at ₹99</p>
-                </div>
-                 <i class="fas fa-cookie-bite promo-image"></i>
-            </a>
-            <a href="product.html" class="promo-card">
-                <div class="promo-content">
-                    <h3>Dairy Goodness</h3>
-                    <p>Starting ₹45</p>
-                </div>
-                 <i class="fas fa-cheese promo-image"></i>
+                <div class="promo-content"><h3>Snack Combo</h3><p>Only at ₹99</p></div>
+                <i class="fas fa-cookie-bite promo-image"></i>
             </a>
         </div>
     </section>
 
     <main>
-        
         <section>
-            <div class="section-title">
-                <h2>Shop By Category</h2>
-                <a href="category.html" class="view-all">View All</a>
-            </div>
+            <div class="section-title"><h2>Shop By Category</h2><a href="category.html" class="view-all">View All</a></div>
             <div class="categories">
-                <a href="category.html" class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-apple-alt"></i>
-                    </div>
-                    <h3>Fruits & Veg</h3>
-                </a>
-                <a href="category.html" class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-cheese"></i>
-                    </div>
-                    <h3>Dairy</h3>
-                </a>
-                <a href="category.html" class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-cookie"></i>
-                    </div>
-                    <h3>Snacks</h3>
-                </a>
-                <a href="category.html" class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-wine-bottle"></i>
-                    </div>
-                    <h3>Drinks</h3>
-                </a>
-                <a href="category.html" class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-drumstick-bite"></i>
-                    </div>
-                    <h3>Meat</h3>
-                </a>
-                <a href="category.html" class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-bread-slice"></i>
-                    </div>
-                    <h3>Bakery</h3>
-                </a>
-            </div>
-        </section>
-
-        <section>
-            <div class="section-title">
-                <h2>Order Again</h2>
-                <a href="#" class="view-all">See All</a>
-            </div>
-            <div class="scroll-container">
-                <div class="product-grid">
-
-                    <div class="product-card">
-                        <a href="product.html">
-                            <div class="product-image">
-                                <img src="https://via.placeholder.com/150/E0F7FA/00796B?text=Milk" alt="Milk">
-                            </div>
-                        </a>
-                        <div class="product-info">
-                            <h3 class="product-title">Fresh Milk 500ml</h3>
-                            <div class="product-weight">Amul Taaza</div>
-                            <div class="product-price">
-                                <div class="price">₹28</div>
-                                <button class="add-to-cart"><i class="fas fa-plus"></i></button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="product-card">
-                        <a href="product.html">
-                            <div class="product-image">
-                                <div class="discount-badge">15% OFF</div>
-                                <img src="https://via.placeholder.com/150/D7CCC8/5D4037?text=Cookies" alt="Cookies">
-                            </div>
-                        </a>
-                        <div class="product-info">
-                            <h3 class="product-title">Choco Cookies</h3>
-                            <div class="product-weight">Bakery fresh</div>
-                            <div class="product-price">
-                                <div class="price">
-                                    <span class="original-price">₹100</span> ₹85
-                                </div>
-                                <button class="add-to-cart"><i class="fas fa-plus"></i></button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="product-card">
-                        <a href="product.html">
-                            <div class="product-image">
-                                <img src="https://via.placeholder.com/150/FFFACD/FFD700?text=Banana" alt="Banana">
-                            </div>
-                        </a>
-                        <div class="product-info">
-                            <h3 class="product-title">Banana (Dozen)</h3>
-                            <div class="product-weight">Rich in potassium</div>
-                            <div class="product-price">
-                                <div class="price">₹50</div>
-                                <button class="add-to-cart"><i class="fas fa-plus"></i></button>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
-            </div>
         </section>
         
         <section>
-            <div class="section-title">
-                <h2>Deals of the Day</h2>
-                <a href="#" class="view-all">More</a>
-            </div>
+            <div class="section-title"><h2>Featured Products</h2><a href="#" class="view-all">See All</a></div>
             <div class="scroll-container">
                 <div class="product-grid">
-
-                    <div class="product-card">
-                        <a href="product.html">
-                            <div class="product-image">
-                                <img src="https://via.placeholder.com/150/FFCDD2/D32F2F?text=Cola" alt="Cola">
-                            </div>
-                        </a>
-                        <div class="product-info">
-                            <h3 class="product-title">Cola Drink</h3>
-                            <div class="product-weight">500ml Bottle</div>
-                            <div class="product-price">
-                                <div class="price">₹40</div>
-                                <button class="add-to-cart"><i class="fas fa-plus"></i></button>
-                            </div>
-                        </div>
                     </div>
-
-                    <div class="product-card">
-                        <a href="product.html">
-                            <div class="product-image">
-                                <div class="discount-badge">20% OFF</div>
-                                <img src="https://via.placeholder.com/150/FFECB3/E65100?text=Chips" alt="Chips">
-                            </div>
-                        </a>
-                        <div class="product-info">
-                            <h3 class="product-title">Potato Chips</h3>
-                            <div class="product-weight">Classic Salted</div>
-                            <div class="product-price">
-                                <div class="price">
-                                    <span class="original-price">₹25</span> ₹20
-                                </div>
-                                <button class="add-to-cart"><i class="fas fa-plus"></i></button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="product-card">
-                         <a href="product.html">
-                            <div class="product-image">
-                                <img src="https://via.placeholder.com/150/E0BBE4/9575CD?text=Grapes" alt="Grapes">
-                            </div>
-                        </a>
-                        <div class="product-info">
-                            <h3 class="product-title">Black Grapes</h3>
-                            <div class="product-weight">Seedless, 500g</div>
-                            <div class="product-price">
-                                <div class="price">₹90</div>
-                                <span class="out-of-stock-btn">Out of Stock</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
             </div>
         </section>
-
     </main>
 
-    <section class="app-download-banner">
-        <div class="app-icon"><i class="fas fa-mobile-alt"></i></div>
-        <div class="app-download-content">
-            <h3>Get the QuickDash App</h3>
-            <p>Order faster & track delivery live!</p>
-            <div class="app-stores">
-                <a href="#"><img
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/2560px-Google_Play_Store_badge_EN.svg.png"
-                        alt="Get it on Google Play"></a>
-                <a href="#"><img
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/2560px-Download_on_the_App_Store_Badge.svg.png"
-                        alt="Download on the App Store"></a>
-            </div>
-        </div>
-    </section>
-    
-    <section class="trust-badge-section">
-        <div class="trust-badge">
-            <i class="fas fa-shipping-fast"></i>
-            <h5>10-20 Min Delivery</h5>
-        </div>
-        <div class="trust-badge">
-            <i class="fas fa-leaf"></i>
-            <h5>Freshness Guaranteed</h5>
-        </div>
-        <div class="trust-badge">
-            <i class="fas fa-shield-alt"></i>
-            <h5>Secure Payments</h5>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>QuickDash</h3>
-                    <p>Groceries delivered in minutes. Fresh products, best prices, and instant delivery.</p>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>
-                        <li><a href="#">FAQ</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Categories</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Fruits & Vegetables</a></li>
-                        <li><a href="#">Dairy & Breakfast</a></li>
-                        <li><a href="#">Munchies</a></li>
-                        <li><a href="#">Cold Drinks & Juices</a></li>
-                        <li><a href="#">Instant & Frozen Food</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Download App</h3>
-                    <div class="app-download">
-                        <a href="#"><img
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/2560px-Google_Play_Store_badge_EN.svg.png"
-                        alt="Get it on Google Play" style="height: 40px;"></a>
-                    </div>
-                     <div class="app-download">
-                        <a href="#"><img
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/2560px-Download_on_the_App_Store_Badge.svg.png"
-                        alt="Download on the App Store" style="height: 40px;"></a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p>© 2025 QuickDash. All Rights Reserved. Built for demo purposes.</p>
-            </div>
-        </div>
-    </footer>
-
     <script src="assets/js/utils/api.js"></script>
-<script src="assets/js/utils/home.js"></script>
-<script src="assets/js/pages/index.js"></script>
-
-</body>
-
+    <script src="assets/js/utils/home.js"></script> <script src="assets/js/pages/index.js"></script> </body>
 </html>
