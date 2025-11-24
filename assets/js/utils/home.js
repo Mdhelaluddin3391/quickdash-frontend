@@ -1,8 +1,8 @@
-// assets/js/home.js
+// assets/js/utils/home.js
 
 document.addEventListener('DOMContentLoaded', () => {
     loadCategories();
-    loadProducts();
+    loadFeaturedProducts();
 });
 
 async function loadCategories() {
@@ -10,32 +10,37 @@ async function loadCategories() {
     if(!container) return;
 
     try {
-        // Backend se categories lao
+        // Backend call
         const categories = await apiCall('/catalog/categories/');
         
+        // HTML generation
         container.innerHTML = categories.map(cat => `
             <a href="category.html?slug=${cat.slug}" class="category-card">
                 <div class="category-icon">
-                    ${cat.icon_url ? `<img src="${cat.icon_url}" width="40">` : '<i class="fas fa-shopping-basket"></i>'}
+                    ${cat.icon_url ? `<img src="${cat.icon_url}" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">` : '<i class="fas fa-shopping-basket"></i>'}
                 </div>
                 <h3>${cat.name}</h3>
             </a>
         `).join('');
     } catch (e) {
-        console.error("Cat Load Error", e);
+        console.error("Categories Load Error", e);
     }
 }
 
-async function loadProducts() {
+async function loadFeaturedProducts() {
     const grid = document.querySelector('.product-grid');
     if(!grid) return;
 
     try {
-        // Backend se Active SKUs lao
-        const products = await apiCall('/catalog/skus/');
+        // Fetching featured products
+        const products = await apiCall('/catalog/skus/?is_featured=true');
         
+        if(products.length === 0) {
+            grid.innerHTML = '<p style="padding:10px;">No featured products today.</p>';
+            return;
+        }
+
         grid.innerHTML = products.map(p => {
-            // Image URL fix (agar relative hai)
             const imgUrl = p.image_url ? p.image_url : 'https://via.placeholder.com/150?text=No+Image';
             
             return `
@@ -61,20 +66,22 @@ async function loadProducts() {
 
     } catch (e) {
         grid.innerHTML = '<p>Failed to load products.</p>';
+        console.error(e);
     }
 }
 
-// Global Add to Cart Function (api.js ke saath accessible hona chahiye)
+// Global Add to Cart
 window.addToCart = async function(skuId) {
     if (!isLoggedIn()) {
         window.location.href = 'auth.html';
         return;
     }
     try {
+        // Quantity 1 add kar rahe hain
         await apiCall('/orders/cart/add/', 'POST', { sku_id: skuId, quantity: 1 }, true);
         alert("Added to cart!");
         updateGlobalCartCount();
     } catch (e) {
-        alert(e.message);
+        alert("Error: " + e.message);
     }
 };

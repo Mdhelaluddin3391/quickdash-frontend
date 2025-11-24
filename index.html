@@ -350,73 +350,9 @@
         </div>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-
-            // 1. Search Bar Logic (Selectors updated)
-            const input = document.querySelector('.search-bar-row input');
-            const searchBar = document.querySelector('.search-bar-row');
-            if (input && searchBar) {
-                // Focus: Jab click karein
-                input.addEventListener('focus', () => {
-                    searchBar.style.backgroundColor = '#fff';
-                });
-                // Blur: Jab kahin aur click karein
-                input.addEventListener('blur', () => {
-                    searchBar.style.backgroundColor = 'var(--light)';
-                });
-            }
-
-            // 2. Promo Card Auto-Swipe Logic (BADLAAV KIYA GAYA)
-            const scrollBanner = document.querySelector('.scroll-banner');
-            if (scrollBanner) {
-                let currentCardIndex = 0;
-                const promoCards = scrollBanner.querySelectorAll('.promo-card');
-                if (promoCards.length > 1) {
-                    setInterval(() => {
-                        currentCardIndex = (currentCardIndex + 1) % promoCards.length;
-                        const nextCard = promoCards[currentCardIndex];
-                        
-                        // Card ke left position tak scroll karein
-                        scrollBanner.scroll({
-                            left: nextCard.offsetLeft, // NAYA: 15px gap wala logic hata diya
-                            behavior: 'smooth'
-                        });
-                    }, 3000); // Har 3 second mein
-                }
-            }
-
-            // 3. Cart Update Logic (Selectors updated)
-
-            // A. Zaroori elements ko select karein
-            const allAddButtons = document.querySelectorAll('.add-to-cart');
-            const cartCountElement = document.querySelector('.cart-count');
-
-            // B. Shuruati cart count ko number mein store karein
-            let currentCartCount = parseInt(cartCountElement.innerText);
-
-            // C. Sabhi 'ADD' buttons par click listener lagayein
-            allAddButtons.forEach(button => {
-                button.addEventListener('click', (event) => {
-                    
-                    event.preventDefault();
-
-                    // D. Count badhayein
-                    currentCartCount++;
-
-                    // E. Screen par naye count ko update karein
-                    cartCountElement.innerText = currentCartCount;
-
-                    // (Optional) Button ko animate karein
-                    cartCountElement.style.transform = 'scale(1.3)';
-                    setTimeout(() => {
-                        cartCountElement.style.transform = 'scale(1)';
-                    }, 200);
-                });
-            });
-
-        });
-    </script>
+    <script src="assets/js/utils/api.js"></script>
+<script src="assets/js/utils/home.js"></script>
+<script src="assets/js/pages/index.js"></script>
 
 </body>
 

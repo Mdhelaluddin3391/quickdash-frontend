@@ -1,24 +1,20 @@
-// assets/js/api.js
+// assets/js/utils/api.js
 
-// Backend Base URL (Localhost)
 const API_BASE = "http://127.0.0.1:8000/api/v1";
-const MEDIA_URL = "http://127.0.0.1:8000"; // Images ke liye
 
-// Common API Call Function
 async function apiCall(endpoint, method = 'GET', body = null, requireAuth = false) {
     const headers = {
         'Content-Type': 'application/json'
     };
 
-    // Token Attach Logic
     if (requireAuth) {
         const token = localStorage.getItem('accessToken');
         if (token) {
             headers['Authorization'] = `Bearer ${token}`;
         } else {
-            // Agar auth chahiye par token nahi hai, login par bhejo
+            // Redirect to login if token is missing but required
             window.location.href = 'auth.html';
-            return;
+            throw new Error("Authentication required");
         }
     }
 
@@ -33,17 +29,17 @@ async function apiCall(endpoint, method = 'GET', body = null, requireAuth = fals
 
     try {
         const response = await fetch(`${API_BASE}${endpoint}`, config);
-        
-        // 401 Unauthorized (Token Expired) handling
+
+        // Token expire hone par logout
         if (response.status === 401 && requireAuth) {
             logout();
-            return;
+            throw new Error("Session expired");
         }
 
         const data = await response.json();
-        
+
         if (!response.ok) {
-            throw new Error(data.detail || data.error || "Something went wrong");
+            throw new Error(data.detail || data.error || JSON.stringify(data) || "Something went wrong");
         }
         return data;
     } catch (error) {
@@ -52,12 +48,10 @@ async function apiCall(endpoint, method = 'GET', body = null, requireAuth = fals
     }
 }
 
-// User Login Status Check
 function isLoggedIn() {
     return !!localStorage.getItem('accessToken');
 }
 
-// Logout Helper
 function logout() {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
@@ -65,21 +59,23 @@ function logout() {
     window.location.href = 'auth.html';
 }
 
-// Cart Count Update (Har page par chalega)
+// Global Cart Count Update
 async function updateGlobalCartCount() {
-    const cartCountEl = document.querySelector('.cart-count');
-    if (!cartCountEl || !isLoggedIn()) return;
+    const cartCountEls = document.querySelectorAll('.cart-count');
+    if (cartCountEls.length === 0 || !isLoggedIn()) return;
 
     try {
         const cart = await apiCall('/orders/cart/', 'GET', null, true);
-        // Items ki quantity ka total
+        // Total Quantity Count
         const count = cart.items.reduce((acc, item) => acc + item.quantity, 0);
-        cartCountEl.innerText = count;
-        cartCountEl.style.display = count > 0 ? 'flex' : 'none';
+        
+        cartCountEls.forEach(el => {
+            el.innerText = count;
+            el.style.display = count > 0 ? 'flex' : 'none';
+        });
     } catch (e) {
         console.log("Cart fetch failed (silent)", e);
     }
 }
 
-// Page load par cart update
 document.addEventListener('DOMContentLoaded', updateGlobalCartCount);
