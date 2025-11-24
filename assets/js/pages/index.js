@@ -1,3 +1,5 @@
+// assets/js/pages/index.js
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // 1. Search Bar Logic
@@ -33,24 +35,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 3. Cart Update Logic (Frontend Animation Only - Backend sync utils/home.js karega)
-    const allAddButtons = document.querySelectorAll('.add-to-cart');
-    const cartCountElement = document.querySelector('.cart-count');
-
-    if(cartCountElement) {
-        let currentCartCount = parseInt(cartCountElement.innerText);
-
-        allAddButtons.forEach(button => {
-            button.addEventListener('click', (event) => {
-                // Note: Asli logic window.addToCart (home.js) sambhal raha hai, yeh sirf visual animation ke liye hai
-                // Agar backend integration hai toh ise hata bhi sakte hain
-                
+    // 3. Cart Animation Logic (Updated for Dynamic Elements)
+    // Event Delegation use kar rahe hain taaki API se load hue buttons par bhi click chale
+    document.addEventListener('click', (e) => {
+        // Check karein ki click 'add-to-cart' button ya uske icon par hua hai
+        const btn = e.target.closest('.add-to-cart');
+        
+        if (btn) {
+            const cartCountElement = document.querySelector('.cart-count');
+            if(cartCountElement) {
                 // Button ko animate karein
                 cartCountElement.style.transform = 'scale(1.3)';
                 setTimeout(() => {
                     cartCountElement.style.transform = 'scale(1)';
                 }, 200);
-            });
-        });
-    }
+            }
+        }
+    });
+
 });
