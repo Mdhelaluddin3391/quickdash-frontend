@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - QuickDash</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <link rel="stylesheet" href="assets/css/checkout_style.css">
+
+
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="cart.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Cart
+            </a>
+            <div class="logo">Checkout</div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="checkout-layout">
+
+            <div class="checkout-details">
+
+                <section class="checkout-section">
+                    <h2 class="section-title">Delivery Address</h2>
+                    
+                    <div class="address-card selected">
+                        <div class="address-radio">
+                            <input type="radio" id="addr1" name="delivery_address" checked>
+                            <label for="addr1"></label>
+                        </div>
+                        <div class="address-details">
+                            <span class="address-tag">Home</span>
+                            <p class="address-name">Rohan Sharma</p>
+                            <p class="address-full">123, Sunrise Apartments, Opp. City Mall, Dharmanagar - 799250</p>
+                            <p class="address-phone">Phone: +91 9876543210</p>
+                        </div>
+                        <a href="#" class="edit-btn">Edit</a>
+                    </div>
+
+                    <div class="address-card">
+                        <div class="address-radio">
+                            <input type="radio" id="addr2" name="delivery_address">
+                            <label for="addr2"></label>
+                        </div>
+                        <div class="address-details">
+                            <span class="address-tag">Work</span>
+                            <p class="address-name">Rohan Sharma</p>
+                            <p class="address-full">QuickDash Office, Tech Park, Agartala - 799001</p>
+                            <p class="address-phone">Phone: +91 9876543210</p>
+                        </div>
+                        <a href="#" class="edit-btn">Edit</a>
+                    </div>
+                    
+                    <button class="add-new-address-btn">
+                        <i class="fas fa-plus"></i>
+                        Add New Address
+                    </button>
+                </section>
+
+                <section class="checkout-section">
+                    <h2 class="section-title">Payment Method</h2>
+                    
+                    <div class="payment-option selected">
+                        <input type="radio" id="payment_cod" name="payment_method" checked>
+                        <label for="payment_cod">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <span>
+                                <strong>Cash on Delivery (COD)</strong>
+                                <small>Pay at your doorstep</small>
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="payment-option">
+                        <input type="radio" id="payment_upi" name="payment_method">
+                        <label for="payment_upi">
+                            <i class="fab fa-google-pay"></i>
+                            <span>
+                                <strong>UPI / Wallets</strong>
+                                <small>PhonePe, Google Pay, Paytm</small>
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="payment-option">
+                        <input type="radio" id="payment_card" name="payment_method">
+                        <label for="payment_card">
+                            <i class="fas fa-credit-card"></i>
+                            <span>
+                                <strong>Credit / Debit Card</strong>
+                                <small>Visa, Mastercard, RuPay</small>
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="payment-option">
+                        <input type="radio" id="payment_netbanking" name="payment_method">
+                        <label for="payment_netbanking">
+                            <i class="fas fa-university"></i>
+                            <span>
+                                <strong>Net Banking</strong>
+                                <small>All major banks supported</small>
+                            </span>
+                        </label>
+                    </div>
+
+                </section>
+
+            </div>
+
+            <div class="order-summary-container">
+                <h2>Order Summary</h2>
+                
+                <div class="savings-badge">
+                    <i class="fas fa-tag"></i>
+                    <span>You're saving ₹10 on this order!</span>
+                </div>
+                
+                <div class="summary-items-list">
+                    <div class="summary-item">
+                        <span class="item-name">Fresh Milk 500ml (x1)</span>
+                        <span class="item-price">₹28.00</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="item-name">Banana (Dozen) (x2)</span>
+                        <span class="item-price">₹100.00</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="item-name">Greek Yogurt 200g (x1)</span>
+                        <span class="item-price">₹90.00</span>
+                    </div>
+                </div>
+
+                <div class="summary-divider"></div>
+
+                <div class="summary-row">
+                    <span>Subtotal (4 items)</span>
+                    <span id="summary-subtotal">₹218.00</span>
+                </div>
+                
+                <div class="summary-row">
+                    <span>Delivery Fee</span>
+                    <span id="summary-delivery" class="text-green">FREE</span>
+                </div>
+
+                <div class="summary-row">
+                    <span>Handling Fee</span>
+                    <span id="summary-handling">₹5.00</span>
+                </div>
+                
+                <div class="summary-divider"></div>
+
+                <div class="summary-row total">
+                    <span>To Pay</span>
+                    <span id="summary-total">₹223.00</span>
+                </div>
+
+                <a href="order_success.html" class="place-order-button">
+                    <i class="fas fa-lock"></i> Place Order
+                </a>
+                
+                <div class="security-note">
+                    <i class="fas fa-shield-alt"></i> Secure checkout · 100% protected
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js">
+        document.addEventListener('DOMContentLoaded', function() {
+    // Address selection
+    const addressCards = document.querySelectorAll('.address-card');
+    addressCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const radio = this.querySelector('input[type="radio"]');
+            if (radio) {
+                radio.checked = true;
+                addressCards.forEach(c => c.classList.remove('selected'));
+                this.classList.add('selected');
+            }
+        });
+    });
+    
+    // Payment method selection
+    const paymentOptions = document.querySelectorAll('.payment-option');
+    paymentOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            const radio = this.querySelector('input[type="radio"]');
+            if (radio) {
+                radio.checked = true;
+                paymentOptions.forEach(o => o.classList.remove('selected'));
+                this.classList.add('selected');
+            }
+        });
+    });
+    
+    // Add new address button
+    const addAddressBtn = document.querySelector('.add-new-address-btn');
+    addAddressBtn.addEventListener('click', function() {
+        alert('Add new address functionality would open a form here.');
+        // In a real implementation, this would open a modal or form
+    });
+    
+    // Edit address buttons
+    const editButtons = document.querySelectorAll('.edit-btn');
+    editButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation(); // Prevent triggering the card selection
+            alert('Edit address functionality would open here.');
+            // In a real implementation, this would open an edit form
+        });
+    });
+});
+    </script>
+
+</body>
+</html>

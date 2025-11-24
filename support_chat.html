@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-R">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Chat - QuickDash</title>
+    <link rel="stylesheet" href="assets/css/support_chat_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="support.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                All Tickets
+            </a>
+            <div class="logo">Support Chat</div>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <div class="chat-container">
+            <div class="chat-header">
+                <h1 class="ticket-subject">#TKT-A8B2C1: Item missing from order</h1>
+                <span class="ticket-status open">Open</span>
+            </div>
+
+            <div class="chat-messages" id="chat-messages">
+
+                <div class="message customer">
+                    <div class="message-bubble">
+                        <p class="message-text">Mera order QD1209384 abhi deliver hua, lekin usmein 2 ke bajaye 1 hi
+                            milk packet tha.</p>
+                        <span class="message-time">10 Nov, 10:30 AM</span>
+                    </div>
+                </div>
+
+                <div class="message staff">
+                    <div class="message-bubble">
+                        <p class="message-user">Rohan (Support Staff)</p>
+                        <p class="message-text">Hi, inconvenience ke liye khed hai. Hum isse check kar rahe hain.</p>
+                        <span class="message-time">10 Nov, 10:35 AM</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="chat-reply-form">
+                <form id="reply-form">
+                    <div class="form-group">
+                        <textarea id="reply-message" rows="3" placeholder="Type your reply here..." required></textarea>
+                        <button type="submit" class="btn-send" id="send-btn" aria-label="Send">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. URL se ticket ID nikaalein
+            // const ticketId = new URLSearchParams(window.location.search).get('id');
+            const ticketId = 1; // Dummy ID
+
+            const chatMessages = document.getElementById('chat-messages');
+            const replyForm = document.getElementById('reply-form');
+            const sendBtn = document.getElementById('send-btn');
+            const messageInput = document.getElementById('reply-message');
+
+            // --- Function: Naya message bubble add karna ---
+            function addMessageBubble(message, isCustomer, userName = null) {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('message', isCustomer ? 'customer' : 'staff');
+
+                let userHtml = '';
+                if (userName) {
+                    userHtml = `<p class="message-user">${userName}</p>`;
+                }
+
+                messageDiv.innerHTML = `
+                    <div class="message-bubble">
+                        ${userHtml}
+                        <p class="message-text">${message.text || message.message}</p>
+                        <span class="message-time">${new Date(message.created_at || Date.now()).toLocaleTimeString()}</span>
+                    </div>
+                `;
+                chatMessages.appendChild(messageDiv);
+                // Scroll to bottom
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            // --- 2. Page Load par Chat History Fetch karein ---
+            function loadChat() {
+                // fetch(`/api/support/tickets/${ticketId}/`)
+                // .then(res => res.json())
+                // .then(data => {
+                //     document.querySelector('.ticket-subject').innerText = `#${data.ticket_id}: ${data.subject}`;
+                //     document.querySelector('.ticket-status').innerText = data.status;
+                //     document.querySelector('.ticket-status').className = `ticket-status ${data.status.toLowerCase()}`;
+
+                //     chatMessages.innerHTML = ''; // Clear dummies
+                //     data.messages.forEach(msg => {
+                //         const isCustomer = !msg.user.is_staff;
+                //         const userName = msg.user.is_staff ? `${msg.user.first_name || 'Staff'}` : null;
+                //         addMessageBubble(msg, isCustomer, userName);
+                //     });
+                // });
+            }
+
+            // --- 3. Form Submit Handle karein ---
+            replyForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const messageText = messageInput.value.trim();
+                if (!messageText) return;
+
+                sendBtn.disabled = true;
+                sendBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+
+                // API call
+                // fetch(`/api/support/tickets/${ticketId}/add-message/`, {
+                //     method: 'POST',
+                //     headers: { 'Content-Type': 'application/json', ...authHeaders },
+                //     body: JSON.stringify({ message: messageText })
+                // })
+                // .then(res => res.json())
+                // .then(data => {
+                //     if (data.id) {
+                //         addMessageBubble(data, true); // Naya message (customer ka)
+                //         messageInput.value = '';
+                //     } else {
+                //         alert('Error sending message.');
+                //     }
+                // })
+                // .finally(() => {
+                //     sendBtn.disabled = false;
+                //     sendBtn.innerHTML = '<i class="fas fa-paper-plane"></i>';
+                // });
+
+                // Dummy success
+                setTimeout(() => {
+                    addMessageBubble({ message: messageText, created_at: Date.now() }, true);
+                    messageInput.value = '';
+                    sendBtn.disabled = false;
+                    sendBtn.innerHTML = '<i class="fas fa-paper-plane"></i>';
+                }, 500);
+            });
+
+            // Initial load
+            // loadChat();
+        });
+    </script>
+
+</body>
+
+</html>

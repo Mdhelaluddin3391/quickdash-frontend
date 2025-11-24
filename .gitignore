@@ -1,0 +1,8 @@
+venv/
+.venv/
+.env/
+.env.local
+.env.*.local
+.venv/bin/activate
+.venv/bin/activate.fish
+.venv/bin/activate

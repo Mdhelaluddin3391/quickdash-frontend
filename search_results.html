@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/search_results_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Search Results - QuickDash</title>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Home
+            </a>
+            <div class="logo">QuickDash</div>
+            <a href="cart.html" class="cart-link" title="Cart">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </a>
+        </div>
+        <div class="search-bar-wrapper">
+            <form class="search-bar" method="GET" action="search_results.html">
+                <input type="text" name="q" placeholder="Search for items..." value="" id="search-input">
+            </form>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <div class="search-title-container">
+            <h1>Search Results for "<span id="search-term">...</span>"</h1>
+            <p id="result-count">Loading results...</p>
+        </div>
+
+        <div class="product-grid" id="product-grid-container">
+        </div>
+
+        <div id="no-results-message" style="display: none;">
+            <i class="fas fa-search"></i>
+            <h3>No items found</h3>
+            <p>We couldn't find any products matching your search. Please try a different keyword.</p>
+        </div>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. URL se search query (e.g., ?q=milk) nikaalein
+            const urlParams = new URLSearchParams(window.location.search);
+            const query = urlParams.get('q');
+
+            // 2. Query ko page par display karein
+            const searchTermEl = document.getElementById('search-term');
+            const searchInputEl = document.getElementById('search-input');
+            if (query) {
+                searchTermEl.innerText = query;
+                searchInputEl.value = query;
+                document.title = `Search for '${query}' - QuickDash`;
+            } else {
+                searchTermEl.innerText = "all items";
+            }
+
+            // --- Yahaan aapka API call logic aayega ---
+            // 3. API se data fetch karein (Abhi ke liye, hum dummy data use karenge)
+
+            // Example API call (aapko 'store_id' bhi add karna hoga)
+            // fetch(`/api/inventory/search/?store_id=1&q=${query}`)
+            //     .then(response => response.json())
+            //     .then(data => {
+            //         populateProducts(data);
+            //     });
+
+            // Abhi ke liye, hum dummy data manually call kar rahe hain
+            // populateProducts([]); // "No results" test karne ke liye
+            populateProducts(getDummyData()); // "Results found" test karne ke liye
+        });
+
+        function populateProducts(products) {
+            const grid = document.getElementById('product-grid-container');
+            const resultCount = document.getElementById('result-count');
+            const noResults = document.getElementById('no-results-message');
+
+            grid.innerHTML = ''; // Purane results clear karein
+
+            if (!products || products.length === 0) {
+                // Koi product nahi mila
+                resultCount.innerText = "Found 0 items";
+                noResults.style.display = 'block';
+            } else {
+                // Products miley
+                resultCount.innerText = `Found ${products.length} items`;
+                noResults.style.display = 'none';
+
+                products.forEach(product => {
+                    const productCard = createProductCard(product);
+                    grid.appendChild(productCard);
+                });
+            }
+        }
+
+        function createProductCard(product) {
+            const productEl = document.createElement('div');
+            productEl.className = 'product';
+
+            // Price logic
+            const oldPriceHtml = product.is_on_sale ? `<span class="old-price">₹${product.price}</span>` : '';
+            const priceHtml = `<span>₹${product.current_price}</span>`;
+
+            // Stock logic
+            const buttonHtml = product.is_in_stock
+                ? `<a href="#" class="add-btn" data-id="${product.id}">ADD</a>`
+                : `<span class="out-of-stock-btn">Out of Stock</span>`;
+
+            productEl.innerHTML = `
+                <a href="product.html?id=${product.id}">
+                    <img src="${product.variant.product.main_image}" alt="${product.variant.product.name}">
+                </a>
+                <h4>${product.variant.product.name}</h4>
+                <p>${product.variant.variant_name}</p>
+                <div class="price">
+                    <div>${oldPriceHtml} ${priceHtml}</div>
+                    ${buttonHtml}
+                </div>
+            `;
+            return productEl;
+        }
+
+        function getDummyData() {
+            // Yeh data aapke API response jaisa hona chahiye
+            return [
+                {
+                    "id": 1,
+                    "variant": {
+                        "id": 1,
+                        "variant_name": "500ml",
+                        "product": {
+                            "id": 1,
+                            "name": "Fresh Milk",
+                            "main_image": "https://via.placeholder.com/150/E0F7FA/00796B?text=Milk"
+                        }
+                    },
+                    "price": "28.00",
+                    "sale_price": null,
+                    "current_price": "28.00",
+                    "is_on_sale": false,
+                    "is_in_stock": true
+                },
+                {
+                    "id": 2,
+                    "variant": {
+                        "id": 2,
+                        "variant_name": "1kg",
+                        "product": {
+                            "id": 2,
+                            "name": "Premium Milk Bread",
+                            "main_image": "https://via.placeholder.com/150/D7CCC8/5D4037?text=Bread"
+                        }
+                    },
+                    "price": "50.00",
+                    "sale_price": "45.00",
+                    "current_price": "45.00",
+                    "is_on_sale": true,
+                    "is_in_stock": true
+                },
+                {
+                    "id": 3,
+                    "variant": {
+                        "id": 3,
+                        "variant_name": "250g",
+                        "product": {
+                            "id": 3,
+                            "name": "Salted Butter (Milk)",
+                            "main_image": "https://via.placeholder.com/150/FFECB3/E65100?text=Butter"
+                        }
+                    },
+                    "price": "120.00",
+                    "sale_price": null,
+                    "current_price": "120.00",
+                    "is_on_sale": false,
+                    "is_in_stock": false
+                }
+            ];
+        }
+
+    </script>
+
+</body>
+
+</html>

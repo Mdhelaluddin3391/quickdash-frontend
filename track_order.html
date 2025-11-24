@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Order - QuickDash</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="assets/css/track_order_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="profile.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                My Orders
+            </a>
+            <div class="logo">Track Order</div>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <h1 class="order-id-title">Order #QD1209385</h1>
+
+        <div class="tracking-layout">
+
+            <div class="tracking-timeline-section">
+                <h2 class="section-title">Order Status</h2>
+
+                <div class="timeline">
+                    <div class="timeline-item completed">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Order Placed</h3>
+                            <p>11 Nov 2025, 10:00 AM</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item completed">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Order Confirmed</h3>
+                            <p>11 Nov 2025, 10:05 AM</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item active">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Out for Delivery</h3>
+                            <p>Your delivery executive is on the way.</p>
+                            <span class="expected-time">Expected by 11:30 AM</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Delivered</h3>
+                            <p>Successfully delivered to your address.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="map-container">
+                    <h2 class="section-title">Live Tracking</h2>
+                    <div id="map"></div>
+                </div>
+            </div>
+
+            <div class="order-details-card">
+                <h2 class="section-title">Delivery Details</h2>
+
+                <div class="delivery-executive">
+                    <img src="https://via.placeholder.com/50/4CAF50/FFFFFF?text=DE" alt="Delivery Executive">
+                    <div class="executive-info">
+                        <strong>Rahul (Delivery Executive)</strong>
+                        <p>Contact: +91 9000XXXXX</p>
+                    </div>
+                    <a href="#" class="call-btn" title="Call Executive"><i class="fas fa-phone"></i></a>
+                </div>
+
+                <div class="delivery-info-row">
+                    <i class="fas fa-clock"></i>
+                    <span><strong>15 mins</strong> expected delivery time.</span>
+                </div>
+                <div class="delivery-info-row">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Delivering to: Home (123, Sunrise Apartments)</span>
+                </div>
+
+                <div class="delivery-actions">
+                    <a href="profile.html" class="btn-secondary">View Order Summary</a>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- 1. Dummy Locations (Inhein API se fetch karein) ---
+            const storeLocation = { lat: 12.9352, lng: 77.6160, name: "Koramangala Hub" };
+            const customerLocation = { lat: 12.9280, lng: 77.6220, name: "Your Location" };
+            // Rider ki location WebSocket se aayegi
+            let riderLocation = { lat: 12.9310, lng: 77.6190 };
+
+            // --- 2. Map Initialization ---
+            const map = L.map('map').setView([storeLocation.lat, storeLocation.lng], 14);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '© OpenStreetMap'
+            }).addTo(map);
+
+            // --- 3. Custom Icons ---
+            const storeIcon = L.icon({
+                iconUrl: 'https://cdn-icons-png.flaticon.com/512/3448/3448339.png',
+                iconSize: [40, 40],
+            });
+            const customerIcon = L.icon({
+                iconUrl: 'https://cdn-icons-png.flaticon.com/512/25/25694.png',
+                iconSize: [35, 35],
+            });
+            const riderIcon = L.icon({
+                iconUrl: 'https://cdn-icons-png.flaticon.com/512/3034/3034874.png',
+                iconSize: [38, 38],
+            });
+
+            // --- 4. Add Markers ---
+            L.marker([storeLocation.lat, storeLocation.lng], { icon: storeIcon }).addTo(map).bindPopup(storeLocation.name);
+            L.marker([customerLocation.lat, customerLocation.lng], { icon: customerIcon }).addTo(map).bindPopup(customerLocation.name);
+
+            // Rider ka marker alag variable mein store karein taaki use move kar sakein
+            const riderMarker = L.marker([riderLocation.lat, riderLocation.lng], { icon: riderIcon }).addTo(map).bindPopup("Delivery Executive");
+
+            // --- 5. WebSocket Connection (Yeh aapke backend se connect hoga) ---
+            const orderId = document.querySelector('.order-id-title').innerText.replace('Order ', '');
+            // Aapko 'ws://' ya 'wss://' (production mein) use karna hoga
+            const socketProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const socket = new WebSocket(
+                `${socketProtocol}//${window.location.host}/ws/track/${orderId}/`
+            );
+
+            socket.onopen = function (e) {
+                console.log("WebSocket connection established!");
+            };
+
+            socket.onmessage = function (e) {
+                const data = JSON.parse(e.data);
+
+                // Aapke delivery/consumers.py ke 'rider.location.update' event ke hisaab se
+                if (data.type === 'RIDER_LOCATION') {
+                    const newCoords = data.payload; // e.g., { latitude: 12.9315, longitude: 77.6195 }
+                    console.log("New rider location received:", newCoords);
+
+                    // Map par rider ki location update karein
+                    const newLatLng = [newCoords.latitude, newCoords.longitude];
+                    riderMarker.setLatLng(newLatLng);
+
+                    // (Optional) Map ko rider ki nayi location par center karein
+                    // map.panTo(newLatLng);
+                }
+            };
+
+            socket.onclose = function (e) {
+                console.error("WebSocket connection closed unexpectedly.");
+            };
+        });
+    </script>
+</body>
+
+</html>

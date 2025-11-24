@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail - QuickDash</title>
+    <link rel="stylesheet" href="assets/css/product_detail_style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back
+            </a>
+            <div class="logo">QuickDash</div>
+            <a href="cart.html" class="cart-link">
+                🛒
+                <span class="cart-count">3</span> </a>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="product-detail-layout">
+
+            <div class="product-image-container">
+                <span class="product-discount-badge">15% OFF</span>
+                <img src="https://via.placeholder.com/300/E0F7FA/00796B?text=Milk" alt="Fresh Milk">
+            </div>
+
+            <div class="product-info-container">
+
+                <h1 class="product-name">Amul Taaza Fresh Milk 500ml</h1>
+
+                <p class="product-quantity-desc">500 ml Pouch</p>
+
+                <div class="price-and-quantity">
+
+                    <div class="price-box">
+                        <span class="current-price">₹28</span>
+                        <span class="old-price">₹32</span>
+                    </div>
+
+                    <div class="item-quantity-control">
+                        <button class="quantity-btn" aria-label="Decrease quantity" disabled>
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <span class="quantity-value">1</span>
+                        <button class="quantity-btn" aria-label="Increase quantity">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+
+                </div>
+
+                <div class="product-description">
+                    <h3>Product Details</h3>
+                    <p>
+                        Amul Taaza Toned Milk is pasteurised milk with fat content reduced to meet 'toned' milk
+                        standards. It's refreshing, nutritious, and perfect for your daily consumption.
+                    </p>
+                    <ul>
+                        <li>Toned Milk, Pasteurised</li>
+                        <li>Good for tea, coffee, or drinking directly.</li>
+                        <li>Shelf life: 48 hours under refrigeration.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="sticky-footer-cart">
+                <div class="footer-price-summary">
+                    <span class="item-count">1 Item</span>
+                    <span class="total-price">₹28</span>
+                </div>
+                <button class="add-to-cart-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    Add to Cart
+                </button>
+            </div>
+
+        </div>
+        <section class="container reviews-section">
+            <h2 class="reviews-title">Customer Reviews</h2>
+
+            <div class="review-form-container">
+                <h3>Write a Review</h3>
+                <p>Aapne yeh product khareeda hai. Apna review share karein.</p>
+                <form id="review-form">
+                    <div class="form-group">
+                        <label>Your Rating:</label>
+                        <div class="rating-stars-input">
+                            <input type="radio" id="star5" name="rating" value="5" required /><label for="star5"
+                                title="5 stars"><i class="fas fa-star"></i></label>
+                            <input type="radio" id="star4" name="rating" value="4" /><label for="star4"
+                                title="4 stars"><i class="fas fa-star"></i></label>
+                            <input type="radio" id="star3" name="rating" value="3" /><label for="star3"
+                                title="3 stars"><i class="fas fa-star"></i></label>
+                            <input type="radio" id="star2" name="rating" value="2" /><label for="star2"
+                                title="2 stars"><i class="fas fa-star"></i></label>
+                            <input type="radio" id="star1" name="rating" value="1" /><label for="star1"
+                                title="1 star"><i class="fas fa-star"></i></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="review-comment">Your Comment:</label>
+                        <textarea id="review-comment" rows="4" placeholder="Product kaisa laga?"></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit-review">Submit Review</button>
+                </form>
+            </div>
+            <div class="review-list" id="review-list">
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="review-user">Rohan S.</span>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>4.5</span>
+                        </div>
+                    </div>
+                    <p class="review-comment">"Bahut fresh milk tha, delivery bhi time par hui. Recommended."</p>
+                    <span class="review-date">05 Nov 2025</span>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="review-user">Priya K.</span>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>4.0</span>
+                        </div>
+                    </div>
+                    <p class="review-comment">"Good quality."</p>
+                    <span class="review-date">02 Nov 2025</span>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+</body>
+
+</html>

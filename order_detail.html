@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Details - QuickDash</title>
+    <link rel="stylesheet" href="assets/css/order_detail_style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="profile.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                My Orders
+            </a>
+            <div class="logo">Order Details</div>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <div class="order-summary-card">
+            
+            <div class="order-main-info">
+                <div class="info-left">
+                    <h1 class="order-id">Order #QD1209384</h1>
+                    <p class="order-date">Placed on: 10 Nov 2025, 10:00 AM</p>
+                </div>
+                <div class="info-right">
+                    <span class="order-status delivered">
+                        <i class="fas fa-check-circle"></i> Delivered
+                    </span>
+                    </div>
+            </div>
+
+            <div class="order-section">
+                <h2 class="section-title">Items Ordered (<span id="item-count">3</span>)</h2>
+                <div class="item-list">
+                    
+                    <div class="item-card">
+                        <div class="item-info">
+                            <span class="item-qty">1 x</span>
+                            <span class="item-name">Fresh Milk 500ml</span>
+                        </div>
+                        <span class="item-price">₹28.00</span>
+                    </div>
+                    
+                    <div class="item-card">
+                        <div class="item-info">
+                            <span class="item-qty">2 x</span>
+                            <span class="item-name">Banana (Dozen)</span>
+                        </div>
+                        <span class="item-price">₹100.00</span>
+                    </div>
+
+                    <div class="item-card">
+                        <div class="item-info">
+                            <span class="item-qty">1 x</span>
+                            <span class="item-name">Choco Cookies</span>
+                        </div>
+                        <span class="item-price">₹85.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="order-section">
+                <h2 class="section-title">Delivery & Payment</h2>
+                <div class="details-grid">
+                    <div>
+                        <strong>Delivered To:</strong>
+                        <p>Rohan Sharma, 123, Sunrise Apartments, Opp. City Mall, Dharmanagar - 799250</p>
+                    </div>
+                    <div>
+                        <strong>Payment Method:</strong>
+                        <p>Cash on Delivery (COD)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="order-section price-breakdown">
+                <h2 class="section-title">Price Breakdown</h2>
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="summary-subtotal">₹213.00</span>
+                </div>
+                <div class="summary-row discount">
+                    <span>Discount (SAVE10)</span>
+                    <span id="summary-discount">- ₹21.30</span>
+                </div>
+                <div class="summary-row">
+                    <span>Delivery Fee</span>
+                    <span id="summary-delivery">₹20.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Rider Tip</span>
+                    <span id="summary-tip">₹10.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Taxes</span>
+                    <span id="summary-taxes">₹9.59</span>
+                </div>
+                <div class="summary-divider"></div>
+                <div class="summary-row total">
+                    <span>Grand Total</span>
+                    <span id="summary-total">₹231.29</span>
+                </div>
+            </div>
+            
+            <div class="order-actions">
+                <button class="btn btn-secondary">
+                    <i class="fas fa-headset"></i> Get Support
+                </button>
+                <button class="btn btn-primary" id="reorder-btn">
+                    <i class="fas fa-redo"></i> Reorder
+                </button>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. URL se order ID nikaalein
+            // const orderId = new URLSearchParams(window.location.search).get('order_id');
+            const orderId = "QD1209384"; // Dummy ID
+
+            // 2. "Reorder" button ko handle karein
+            const reorderBtn = document.getElementById('reorder-btn');
+            reorderBtn.addEventListener('click', () => {
+                reorderBtn.disabled = true;
+                reorderBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Adding...';
+                
+                // Backend API ko call karein
+                // fetch(`/api/orders/${orderId}/reorder/`, { method: 'POST', ...headers })
+                // .then(res => res.json())
+                // .then(data => {
+                //     if(data.cart) {
+                //         alert('Items added to your cart!');
+                //         window.location.href = 'cart.html';
+                //     } else {
+                //         alert(data.error || 'Could not reorder all items.');
+                //         reorderBtn.disabled = false;
+                //         reorderBtn.innerHTML = '<i class="fas fa-redo"></i> Reorder';
+                //     }
+                // });
+                
+                // Dummy success
+                setTimeout(() => {
+                    alert('Items added to your cart!');
+                    window.location.href = 'cart.html';
+                }, 1000);
+            });
+
+            // 3. Page Load par Order Details Fetch karein
+            // fetch(`/api/orders/${orderId}/`)
+            // .then(res => res.json())
+            // .then(data => {
+            //     // Yahaan aap saare elements (like #order-id, #summary-subtotal, etc.)
+            //     // ko 'data' object se update karenge.
+            // });
+        });
+    </script>
+
+</body>
+</html>
