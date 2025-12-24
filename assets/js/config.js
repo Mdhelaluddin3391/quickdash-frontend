@@ -8,7 +8,9 @@
         API_BASE: "http://127.0.0.1:8000/api/v1", 
         
         USER: safeJsonParse('user'),
-        IS_LOGGED_IN: !!localStorage.getItem('access_token'),
+        IS_LOGGED_IN: !!localStorage.getItem('user'),
+        ACCESS_TOKEN: localStorage.getItem('access_token'),
+        USER_PHONE: localStorage.getItem('user_phone'),
         
         URLS: {
             HOME: '/index.html',

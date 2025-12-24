@@ -1,42 +1,41 @@
+/* assets/js/pages/account/dashboard.js */
 document.addEventListener('DOMContentLoaded', async () => {
-    if (!localStorage.getItem('access_token')) return window.location.href = '/auth.html';
+    if (!localStorage.getItem('user')) return window.location.href = '/auth.html';
     
-    // Fill Sidebar Info
     const user = JSON.parse(localStorage.getItem('user') || '{}');
-    if(document.getElementById('nav-name')) document.getElementById('nav-name').innerText = user.first_name || 'User';
-    if(document.getElementById('nav-phone')) document.getElementById('nav-phone').innerText = user.phone || '';
+    document.getElementById('nav-name').innerText = user.phone;
+    document.getElementById('nav-phone').innerText = user.email || 'No email set';
 
     try {
-        const orders = await apiCall('/orders/');
-        const orderList = orders.results || orders;
+        // Correct endpoint from orders/urls.py
+        const response = await apiCall('/orders/my/', 'GET');
+        const orders = response.results || response;
         
-        // Stats
-        document.getElementById('total-orders-count').innerText = orderList.length;
-        const totalSpent = orderList.reduce((sum, o) => sum + parseFloat(o.final_amount), 0);
-        document.getElementById('total-spent').innerText = `₹${totalSpent.toFixed(2)}`;
+        // 1. Update Stats
+        document.getElementById('total-orders-count').innerText = orders.length;
+        const totalSpent = orders.reduce((sum, o) => sum + parseFloat(o.total_amount), 0);
+        document.getElementById('total-spent').innerText = Formatters.toCurrency(totalSpent);
 
-        // Recent Orders
+        // 2. Render Recent Orders
         const recentContainer = document.getElementById('recent-orders-container');
-        if (orderList.length === 0) {
+        if (orders.length === 0) {
             document.getElementById('empty-orders-state').style.display = 'block';
             recentContainer.innerHTML = '';
         } else {
-            recentContainer.innerHTML = orderList.slice(0, 5).map(o => `
-                <div class="stat-card" style="margin-bottom:10px; display:flex; justify-content:space-between;">
+            recentContainer.innerHTML = orders.slice(0, 3).map(o => `
+                <div class="stat-card" style="margin-bottom:10px; display:flex; justify-content:space-between; align-items:center;">
                     <div>
-                        <strong>Order #${o.id.slice(0,8).toUpperCase()}</strong>
-                        <p style="font-size:0.8rem; color:#666;">${new Date(o.created_at).toLocaleDateString()}</p>
+                        <strong>Order #${o.id}</strong>
+                        <p style="font-size:0.8rem; color:#666;">${Formatters.toDate(o.created_at)}</p>
                     </div>
-                    <div>
-                        <span class="badge">${o.status}</span>
+                    <div class="text-right">
+                        <span class="badge" style="display:block; margin-bottom:5px;">${o.status.toUpperCase()}</span>
+                        <a href="/order_detail.html?id=${o.id}" class="text-primary" style="font-size:0.8rem;">Details</a>
                     </div>
                 </div>
             `).join('');
         }
-    } catch (e) { console.error(e); }
+    } catch (e) { 
+        showToast("Failed to load dashboard data", "error");
+    }
 });
-
-window.logout = function() {
-    localStorage.clear();
-    window.location.href = '/index.html';
-}
