@@ -1,0 +1,14 @@
+.assistant-btn { position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px; background: linear-gradient(135deg, #32CD32, #58D68D); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(46, 204, 113, 0.5); cursor: pointer; z-index: 9999; animation: floatBtn 3s ease-in-out infinite; }
+.assistant-box { position: fixed; bottom: 110px; right: 30px; width: 340px; height: 480px; background: #fff; border-radius: 24px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); display: none; flex-direction: column; z-index: 9999; overflow: hidden; }
+.assistant-box.active { display: flex; animation: popIn 0.4s; }
+.ast-header { background: linear-gradient(135deg, #32CD32, #82E0AA); color: #fff; padding: 20px; display: flex; justify-content: space-between; }
+.ast-body { flex-grow: 1; padding: 20px; overflow-y: auto; background: #f0fdf4; display: flex; flex-direction: column; gap: 12px; }
+.msg-bubble { max-width: 80%; padding: 12px 16px; border-radius: 20px; font-size: 0.95rem; }
+.msg-bubble.bot { background: #fff; border: 1px solid #e1e1e1; align-self: flex-start; border-bottom-left-radius: 4px; }
+.msg-bubble.user { background: #32CD32; color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+.ast-footer { padding: 15px; background: #fff; display: flex; gap: 10px; border-top: 1px solid #f0f0f0; }
+.ast-footer input { flex-grow: 1; padding: 12px 20px; border-radius: 30px; border: 1px solid #eee; outline: none; }
+.ast-footer button { background: #32CD32; color: #fff; border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; }
+@keyframes floatBtn { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes popIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+

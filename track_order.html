@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Order - QuickDash</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/track_order_style.css">
+
+    <script src="/assets/js/config.js"></script>
+</head>
+
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <main>
+        <div class="track-layout">
+            <div class="track-sidebar">
+                <div class="track-header">
+                    <a href="/orders.html" class="back-link"><i class="fas fa-arrow-left"></i> Back</a>
+                    <h2 id="order-id-display">Order #...</h2>
+                </div>
+
+                <div class="timeline-container">
+                    <div class="status-step active" id="step-confirmed">
+                        <div class="dot"></div>
+                        <div class="info">Order Confirmed <span class="step-time" id="time-confirmed"></span></div>
+                    </div>
+                    <div class="status-step" id="step-packed">
+                        <div class="dot"></div>
+                        <div class="info">Packed <span class="step-time" id="time-packed"></span></div>
+                    </div>
+                    <div class="status-step" id="step-dispatched">
+                        <div class="dot"></div>
+                        <div class="info">Out for Delivery <br><small id="rider-info">Assigning Rider...</small> <span class="step-time" id="time-dispatched"></span></div>
+                    </div>
+                    <div class="status-step" id="step-delivered">
+                        <div class="dot"></div>
+                        <div class="info">Delivered <span class="step-time" id="time-delivered"></span></div>
+                    </div>
+                </div>
+
+                <div class="order-details-box">
+                    <h4>Order Details</h4>
+                    <div id="order-items-list"></div>
+                    <div class="order-summary">
+                        <div><b>Total:</b> <span id="order-total">₹...</span></div>
+                        <div><b>Payment:</b> <span id="order-payment">...</span></div>
+                    </div>
+                    <div class="order-address">
+                        <b>Delivery Address:</b>
+                        <div id="order-address-text">...</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="map" class="track-map"></div>
+        </div>
+    </main>
+
+    <script src="/assets/js/utils/api.js"></script>
+    <script src="/assets/js/layout.js"></script>
+    
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY_HERE&callback=initMap" async defer></script>
+    
+    <script src="/assets/js/pages/account/track_order.js"></script>
+</body>
+</html>

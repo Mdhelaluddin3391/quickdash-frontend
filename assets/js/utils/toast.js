@@ -1,0 +1,39 @@
+function showToast(message, type = 'info', duration = 3000) {
+    let toastContainer = document.getElementById('toast-container');
+    if (!toastContainer) {
+        toastContainer = document.createElement('div');
+        toastContainer.id = 'toast-container';
+        toastContainer.className = 'toast-container';
+        document.body.appendChild(toastContainer);
+    }
+
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    
+    let icon = '🔔';
+    if (type === 'success') icon = '✅';
+    if (type === 'error') icon = '❌';
+    if (type === 'warning') icon = '⚠️';
+    if (type === 'info') icon = 'ℹ️';
+    
+    toast.innerHTML = `
+        <span class="toast-icon">${icon}</span>
+        <span class="toast-message">${message}</span>
+        <button class="toast-close" onclick="this.parentElement.remove()">✕</button>
+    `;
+    
+    toastContainer.appendChild(toast);
+    
+    setTimeout(() => {
+        if (toast.parentElement) {
+            toast.classList.add('toast-exit');
+            setTimeout(() => toast.remove(), 300);
+        }
+    }, duration);
+}
+
+// Shortcuts
+function showSuccess(message, duration) { showToast(message, 'success', duration); }
+function showError(message, duration) { showToast(message, 'error', duration); }
+function showWarning(message, duration) { showToast(message, 'warning', duration); }
+function showInfo(message, duration) { showToast(message, 'info', duration); }

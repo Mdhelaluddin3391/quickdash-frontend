@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Not Available - QuickDash</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+
+    <script src="/assets/js/config.js"></script>
+</head>
+
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <main>
+        <div class="container" style="text-align: center; padding: 80px 20px; min-height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+            
+            <img src="https://cdn-icons-png.flaticon.com/512/10632/10632613.png" alt="No Service" style="width: 150px; margin-bottom: 30px; opacity: 0.8;">
+            
+            <h1 style="font-size: 2rem; font-weight: 800; color: #2d3436; margin-bottom: 10px;">
+                We're not there yet! 😔
+            </h1>
+            
+            <p style="color: #636e72; margin-bottom: 30px; max-width: 500px; font-size: 1.1rem;">
+                Sorry, we currently do not deliver to your selected location. 
+                We are expanding fast and hope to serve you soon.
+            </p>
+
+            <div style="background: #fff3cd; padding: 15px; border-radius: 8px; border: 1px solid #ffeeba; margin-bottom: 30px;">
+                <i class="fas fa-map-marker-alt text-warning"></i> 
+                <strong>Current Location:</strong> <span id="current-city-display">Checking...</span>
+            </div>
+
+            <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
+                <a href="/addresses.html" class="btn-primary" style="padding: 12px 30px; border-radius: 30px; text-decoration: none;">
+                    <i class="fas fa-map-marked-alt"></i> Change Location
+                </a>
+                <button onclick="logoutAndRedirect()" class="btn-outline" style="padding: 12px 30px; border-radius: 30px; border: 1px solid #dfe6e9; background:none; cursor:pointer;">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="/assets/js/utils/api.js"></script>
+    <script src="/assets/js/layout.js"></script>
+    <script>
+        function logoutAndRedirect() {
+            localStorage.clear();
+            sessionStorage.clear();
+            window.location.href = '/index.html';
+        }
+        
+        // Simple display logic
+        document.addEventListener('DOMContentLoaded', () => {
+            // Try to get city from session if available (from LocationManager)
+            // Or just generic text
+            document.getElementById('current-city-display').innerText = 
+                localStorage.getItem('user_address_text') || "Your selected area";
+        });
+    </script>
+</body>
+</html>

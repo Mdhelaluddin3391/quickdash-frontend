@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Addresses - QuickDash</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/account.css">
+
+    <style>
+        .btn-check:checked + .btn-outline-primary {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+
+    <script src="/assets/js/config.js"></script>
+</head>
+
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <main>
+        <div class="container account-container">
+            <div class="account-layout">
+                
+                <aside class="account-sidebar">
+                    <div class="user-brief">
+                        <div class="avatar-circle" id="nav-avatar">U</div>
+                        <div>
+                            <h4 id="nav-name">Loading...</h4>
+                            <p id="nav-phone">...</p>
+                        </div>
+                    </div>
+                    <nav class="side-nav">
+                        <a href="/profile.html" class="nav-link">
+                            <i class="fas fa-th-large"></i> Dashboard
+                        </a>
+                        <a href="/orders.html" class="nav-link">
+                            <i class="fas fa-box"></i> My Orders
+                        </a>
+                        <a href="/addresses.html" class="nav-link active">
+                            <i class="fas fa-map-marker-alt"></i> Saved Addresses
+                        </a>
+                        <a href="#" onclick="logout()" class="nav-link text-danger">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                    </nav>
+                </aside>
+
+                <div class="account-content">
+                    <div class="content-header">
+                        <h2>Saved Addresses</h2>
+                        <button class="btn-sm btn-primary" onclick="openAddressModal()">
+                            <i class="fas fa-plus"></i> Add New
+                        </button>
+                    </div>
+
+                    <div id="address-grid" class="address-list-grid">
+                        <div class="loader">Loading...</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="addr-modal" class="modal-overlay" style="display: none;">
+            <div class="modal-box">
+                <h3>Add Address</h3>
+                <form id="add-addr-form">
+                    <input type="text" id="a-line" placeholder="Flat / House / Street" required>
+                    <input type="text" id="a-city" placeholder="City" required>
+                    <input type="text" id="a-pincode" placeholder="Pincode" required>
+                    
+                    <div class="mb-3" style="margin-top: 15px; text-align: left;">
+                        <label class="form-label" style="font-weight: bold; display: block; margin-bottom: 5px;">Address Type</label>
+                        <div class="btn-group w-100" role="group" style="display: flex; gap: 5px;">
+                            <input type="radio" class="btn-check" name="address_type" id="type-home" value="HOME" checked style="display:none;">
+                            <label class="btn btn-outline-primary" for="type-home" style="flex: 1; padding: 8px; border: 1px solid #007bff; border-radius: 4px; text-align: center; cursor: pointer;">
+                                <i class="fas fa-home"></i> Home
+                            </label>
+
+                            <input type="radio" class="btn-check" name="address_type" id="type-work" value="WORK" style="display:none;">
+                            <label class="btn btn-outline-primary" for="type-work" style="flex: 1; padding: 8px; border: 1px solid #007bff; border-radius: 4px; text-align: center; cursor: pointer;">
+                                <i class="fas fa-briefcase"></i> Work
+                            </label>
+
+                            <input type="radio" class="btn-check" name="address_type" id="type-other" value="OTHER" style="display:none;">
+                            <label class="btn btn-outline-primary" for="type-other" style="flex: 1; padding: 8px; border: 1px solid #007bff; border-radius: 4px; text-align: center; cursor: pointer;">
+                                <i class="fas fa-map-pin"></i> Other
+                            </label>
+                        </div>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn-outline" onclick="closeAddrModal()">Cancel</button>
+                        <button type="submit" class="btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="/assets/js/utils/api.js"></script>
+    <script src="/assets/js/utils/toast.js"></script>
+    <script src="/assets/js/layout.js"></script>
+    <script src="/assets/js/pages/account/addresses.js"></script>
+
+    <script>
+        // Inline script to handle the manual modal since it's specific to this page
+        function closeAddrModal() { document.getElementById('addr-modal').style.display = 'none'; }
+        // Note: window.openAddressModal is already defined in addresses.js
+    </script>
+</body>
+</html>

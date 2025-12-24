@@ -1,0 +1,18 @@
+.checkout-container { padding-top: 20px; padding-bottom: 40px; min-height: 60vh; }
+.cart-layout { display: flex; gap: 30px; align-items: flex-start; }
+.cart-items-section, .checkout-steps { flex: 2; }
+.cart-summary-section { flex: 1; position: sticky; top: 90px; }
+.cart-item-card { background: #fff; padding: 15px; border-radius: 12px; display: flex; align-items: center; gap: 15px; margin-bottom: 15px; box-shadow: var(--shadow); }
+.c-img { width: 70px; height: 70px; object-fit: contain; }
+.c-qty { display: flex; align-items: center; background: var(--primary); border-radius: 6px; padding: 4px; color: #fff; }
+.c-qty button { background: none; border: none; color: #fff; width: 25px; cursor: pointer; }
+.summary-card { background: #fff; padding: 20px; border-radius: 12px; box-shadow: var(--shadow); }
+.btn-checkout { display: block; width: 100%; background: var(--primary); color: #fff; padding: 14px; border-radius: 8px; text-align: center; margin-top: 15px; border: none; cursor: pointer; }
+.step-card { background: #fff; padding: 20px; border-radius: 12px; margin-bottom: 20px; box-shadow: var(--shadow); }
+.address-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; }
+.addr-card { border: 2px solid var(--border); border-radius: 8px; padding: 15px; cursor: pointer; }
+.addr-card.selected { border-color: var(--primary); background: #f0fff4; }
+.payment-option { display: flex; align-items: center; gap: 15px; padding: 15px; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 10px; cursor: pointer; }
+.payment-option.selected { border-color: var(--primary); background: #f0fff4; }
+@media (max-width: 768px) { .cart-layout { flex-direction: column; } }
+

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - QuickDash</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/catalog.css">
+    <link rel="stylesheet" href="/assets/css/toast.css">
+
+    <script src="/assets/js/config.js"></script>
+</head>
+
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <main>
+        <div class="container catalog-container">
+            <div class="listing-header">
+                <a href="/index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back</a>
+                <h1 id="page-title">Loading...</h1>
+            </div>
+        
+            <div class="toolbar">
+                <div class="filter-chips" id="brand-filters"></div>
+                <select id="sort-select" class="sort-dropdown">
+                    <option value="popularity">Popularity</option>
+                    <option value="price_low">Price: Low to High</option>
+                    <option value="price_high">Price: High to Low</option>
+                    <option value="newest">Newest First</option>
+                </select>
+            </div>
+        
+            <div id="product-grid" class="product-grid-view">
+                <div class="loader">Loading products...</div>
+            </div>
+        
+            <div id="empty-state" class="empty-state" style="display: none;">
+                <img src="https://cdn-icons-png.flaticon.com/512/7486/7486744.png" alt="No Items">
+                <h3>No products found</h3>
+                <p>Try searching for something else</p>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="/assets/js/utils/api.js"></script>
+    <script src="/assets/js/utils/toast.js"></script>
+    <script src="/assets/js/layout.js"></script>
+    <script src="/assets/js/pages/catalog/product_list.js"></script>
+</body>
+</html>

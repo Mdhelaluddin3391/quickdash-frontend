@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - QuickDash</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/catalog.css">
+    <link rel="stylesheet" href="/assets/css/toast.css">
+
+    <script src="/assets/js/config.js"></script>
+</head>
+
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <main>
+        <div class="container catalog-container">
+            <div class="product-detail-layout" id="product-content">
+                <div class="p-image-section">
+                    <div class="badge-overlay" id="p-badge"></div>
+                    <img id="p-image" src="" alt="Product Image" class="main-img">
+                </div>
+        
+                <div class="p-info-section">
+                    <div class="p-brand" id="p-brand">Brand Name</div>
+                    <h1 class="p-title" id="p-name">Loading...</h1>
+                    <div class="p-unit" id="p-unit">...</div>
+                    
+                    <div class="p-pricing">
+                        <span class="current-price" id="p-price">...</span>
+                        <span class="mrp" id="p-mrp"></span>
+                        <span class="discount-tag" id="p-discount"></span>
+                    </div>
+        
+                    <hr class="divider">
+        
+                    <div class="p-actions">
+                        <button id="add-to-cart-btn" class="btn-add-main">
+                            ADD TO CART
+                        </button>
+                    </div>
+        
+                    <div class="p-meta">
+                        <h3>Product Details</h3>
+                        <p id="p-desc">Description loading...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="/assets/js/utils/api.js"></script>
+    <script src="/assets/js/utils/toast.js"></script>
+    <script src="/assets/js/layout.js"></script>
+    <script src="/assets/js/pages/catalog/product_detail.js"></script>
+</body>
+</html>

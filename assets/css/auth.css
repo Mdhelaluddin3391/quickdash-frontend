@@ -1,0 +1,13 @@
+.auth-wrapper { display: flex; justify-content: center; align-items: center; min-height: 80vh; padding: 20px; }
+.auth-card { background: #fff; width: 100%; max-width: 400px; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
+.auth-header { text-align: center; margin-bottom: 25px; }
+.auth-icon { width: 60px; height: 60px; background: #e6f7ef; color: var(--primary); border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+.input-group { display: flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 20px; }
+.prefix { background: #f8f9fa; padding: 12px 15px; border-right: 1px solid var(--border); font-weight: 600; }
+.input-group input { width: 100%; border: none; padding: 12px 15px; outline: none; }
+.btn-primary { width: 100%; background: var(--primary); color: #fff; border: none; padding: 14px; border-radius: 8px; font-weight: 600; cursor: pointer; }
+.otp-inputs { display: flex; gap: 8px; justify-content: center; margin-bottom: 20px; }
+.otp-field { width: 45px; height: 50px; text-align: center; border: 1px solid var(--border); border-radius: 8px; font-size: 1.2rem; }
+
+
+

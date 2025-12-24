@@ -1,0 +1,23 @@
+.hero-wrapper { padding: 15px; background: #fff; }
+.scroll-banner { display: flex; gap: 15px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 10px; }
+.promo-card { flex: 0 0 90%; height: 180px; border-radius: 16px; scroll-snap-align: center; background: #eee; position: relative; overflow: hidden; padding: 20px; color: #fff; display: flex; align-items: center; }
+.promo-content h2 { font-size: 1.8rem; font-weight: 800; line-height: 1.1; }
+.promo-img { position: absolute; right: -10px; bottom: -10px; width: 140px; transform: rotate(-10deg); }
+
+#home-category-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px 10px; padding: 10px 20px 30px; }
+.cat-item-home { text-align: center; cursor: pointer; }
+.cat-icon-box { width: 70px; height: 70px; background: #e8f5e9; border-radius: 18px; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; }
+.cat-icon-box img { width: 40px; }
+.cat-label { font-size: 0.75rem; font-weight: 600; }
+
+.flash-sale-container { background: linear-gradient(to right, #fff3e0, #ffffff); padding: 15px 20px; border-top: 1px solid #ffe0b2; }
+.flash-grid { display: flex; gap: 15px; overflow-x: auto; scrollbar-width: none; }
+.flash-card { flex: 0 0 150px; background: #fff; padding: 10px; border-radius: 12px; border: 1px solid #eee; position: relative; }
+.flash-card .badge-off { position: absolute; top: 0; left: 0; background: #ff6b6b; color: #fff; font-size: 0.65rem; padding: 2px 6px; border-radius: 10px 0 10px 0; }
+.brand-scroller { display: flex; gap: 20px; overflow-x: auto; padding: 0 20px 10px; scrollbar-width: none; }
+.brand-circle { flex: 0 0 70px; height: 70px; border-radius: 50%; border: 1px solid #eee; display: flex; align-items: center; justify-content: center; background: #fff; }
+.brand-circle img { width: 40px; }
+
+.category-section { background: #fff; margin-bottom: 15px; border-top: 1px solid #f0f0f0; }
+.product-scroll-wrapper { overflow-x: auto; padding: 10px 20px; display: flex; gap: 15px; scrollbar-width: none; }
+

@@ -1,0 +1,9 @@
+.track-layout { display: flex; height: calc(100vh - 80px); }
+.track-sidebar { width: 350px; background: #fff; border-right: 1px solid var(--border); padding: 20px; overflow-y: auto; z-index: 2; }
+.track-map { flex-grow: 1; background: #eee; }
+.status-step { position: relative; padding-bottom: 30px; border-left: 2px solid var(--border); padding-left: 20px; }
+.status-step:last-child { border-left: transparent; }
+.status-step .dot { position: absolute; left: -6px; top: 0; width: 10px; height: 10px; background: var(--border); border-radius: 50%; }
+.status-step.active .dot { background: var(--primary); box-shadow: 0 0 0 4px rgba(50,205,50,0.2); }
+@media (max-width: 768px) { .track-layout { flex-direction: column; height: auto; } .track-sidebar { width: 100%; height: auto; } .track-map { height: 400px; } }
+
