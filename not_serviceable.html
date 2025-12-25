@@ -65,5 +65,23 @@
                 localStorage.getItem('user_address_text') || "Your selected area";
         });
     </script>
+    <button onclick="changeLocation()" class="btn-primary" style="padding: 12px 30px; border-radius: 30px; text-decoration: none; border:none; cursor:pointer;">
+    <i class="fas fa-map-marked-alt"></i> Change Location
+</button>
+
+<script>
+    function changeLocation() {
+        // Clear old location to trigger modal
+        localStorage.removeItem('user_lat');
+        localStorage.removeItem('user_lng');
+        // Redirect to home, home will automatically open modal because location is missing
+        window.location.href = '/index.html'; 
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('current-city-display').innerText = 
+            localStorage.getItem('user_address_text') || "Unknown Location";
+    });
+</script>
 </body>
 </html>

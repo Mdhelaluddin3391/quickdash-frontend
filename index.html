@@ -116,27 +116,39 @@
         </div>
     </div>
 
-    <div id="location-modal" class="location-modal hidden">
-        <div class="modal-content">
-            <div class="modal-header" style="padding:15px; display:flex; justify-content:space-between;">
-                <h3>Select Location</h3>
-                <button id="close-loc-modal" style="border:none; background:none; font-size:1.2rem;">&times;</button>
+    <div id="location-modal" class="location-modal"> <div class="modal-content">
+        <div class="modal-header" style="padding:15px 20px; border-bottom:1px solid #eee; display:flex; justify-content:space-between; align-items:center;">
+            <h3 style="margin:0; font-size:1.1rem;">Select Delivery Location</h3>
+            <button id="close-loc-modal" style="border:none; background:none; font-size:1.5rem; cursor:pointer;">&times;</button>
+        </div>
+        
+        <div class="map-wrapper">
+            <div id="picker-map"></div>
+            
+            <div class="center-pin-overlay">
+                <div class="floating-pin-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="pin-shadow"></div>
             </div>
-            <div class="map-container" style="position: relative; height: 350px;">
-                <div id="picker-map" style="width: 100%; height: 100%;"></div>
-                <div class="center-pin" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-100%); z-index:1000; pointer-events:none;">
-                    <i class="fas fa-map-marker-alt" style="color:red; font-size:3rem;"></i>
-                </div>
-                <button id="btn-trigger-gps" class="btn-gps-float"><i class="fas fa-crosshairs"></i></button>
+
+            <button id="btn-trigger-gps" class="btn-gps-float" title="Use Current Location">
+                <i class="fas fa-crosshairs"></i>
+            </button>
+        </div>
+
+        <div class="location-details" style="padding:20px;">
+            <h4 id="loc-address-title" style="margin:0 0 5px 0; color:#2d3436;">Detecting location...</h4>
+            <p id="loc-address-text" style="font-size:0.85rem; color:#636e72; margin-bottom:15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Please wait</p>
+            
+            <div id="service-error" style="display:none; color: #e74c3c; background:#fadbd8; padding:10px; border-radius:8px; font-size:0.85rem; margin-bottom:10px; text-align:center;">
+                Not available here.
             </div>
-            <div class="location-details" style="padding:20px;">
-                <h4 id="loc-address-title">Select location</h4>
-                <p id="loc-address-text">...</p>
-                <div id="service-error" class="error-msg hidden">Not available here.</div>
-                <button id="btn-confirm-location" class="btn-primary w-100" style="padding:10px; border-radius:8px; border:none; background:#32CD32; color:white;" disabled>Confirm</button>
-            </div>
+
+            <button id="btn-confirm-location" class="btn-primary w-100" style="width:100%; padding:14px; border-radius:12px; border:none; background:#32CD32; color:white; font-weight:600; font-size:1rem; cursor:pointer;" disabled>
+                Confirm Location
+            </button>
         </div>
     </div>
+</div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="/assets/js/utils/api.js"></script>

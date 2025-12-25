@@ -85,24 +85,28 @@
         </div>
 
         <div id="address-modal" class="modal-overlay" style="display: none;">
-            <div class="modal-box">
-                <h3>New Address</h3>
-                <form id="new-address-form">
-                    <input type="text" id="addr-line" placeholder="House/Flat No, Street" required>
-                    <input type="text" id="addr-city" placeholder="City" required>
-                    <input type="text" id="addr-pincode" placeholder="Pincode" maxlength="6" required>
-                    <select id="addr-type">
-                        <option value="HOME">Home</option>
-                        <option value="WORK">Work</option>
-                        <option value="OTHER">Other</option>
-                    </select>
-                    <div class="modal-actions">
-                        <button type="button" class="btn-outline" onclick="closeModal()">Cancel</button>
-                        <button type="submit" class="btn-primary">Save Address</button>
-                    </div>
-                </form>
+    <div class="modal-box">
+        <h3>Add Delivery Address</h3>
+        <form id="new-address-form">
+            <input type="hidden" id="c-lat"><input type="hidden" id="c-lng">
+            
+            <input type="text" id="c-pincode" placeholder="Pincode" required readonly style="background:#eee; margin-bottom:10px;">
+            <input type="text" id="c-house" placeholder="House No / Flat No (Required)" required style="margin-bottom:10px;">
+            <input type="text" id="c-line" placeholder="Road name, Area (From Map)" required style="margin-bottom:10px;">
+            
+            <select id="c-type" style="width:100%; padding:10px; margin-bottom:15px;">
+                <option value="HOME">Home</option>
+                <option value="WORK">Work</option>
+                <option value="OTHER">Other</option>
+            </select>
+            
+            <div class="modal-actions">
+                <button type="button" class="btn-outline" onclick="document.getElementById('address-modal').style.display='none'">Cancel</button>
+                <button type="submit" class="btn-primary">Save & Deliver Here</button>
             </div>
-        </div>
+        </form>
+    </div>
+</div>
     </main>
 
     <div id="footer-placeholder"></div>

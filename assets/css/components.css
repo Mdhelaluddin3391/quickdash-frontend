@@ -32,3 +32,107 @@ footer { background: #f0fff4; padding-top: 0; border-top: 1px solid #32CD32; mar
 
 
 
+
+
+
+/* --- Modern Location Picker Styles --- */
+
+/* Background Blur jab Location Popup khula ho */
+body.location-mode-active main,
+body.location-mode-active header,
+body.location-mode-active footer {
+    filter: blur(5px);
+    pointer-events: none; /* User peeche click nahi kar payega */
+}
+
+/* Location Modal Full Screen Center */
+.location-modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center mein dikhane ke liye */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.location-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background: #fff;
+    width: 90%;
+    max-width: 450px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    position: relative;
+}
+
+/* Map Container Relative taki Pin absolute ho sake */
+.map-wrapper {
+    position: relative;
+    height: 350px;
+    width: 100%;
+}
+
+#picker-map {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* Center Fixed Pin (Swiggy Style) */
+.center-pin-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -100%); /* Tip point exactly center par */
+    z-index: 10;
+    pointer-events: none; /* Taki map drag ho sake pin ke through */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pin-shadow {
+    width: 10px;
+    height: 4px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 50%;
+    margin-top: -5px;
+}
+
+.floating-pin-icon {
+    font-size: 2.5rem;
+    color: #e74c3c;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+    animation: bouncePin 1s infinite alternate;
+}
+
+@keyframes bouncePin {
+    from { transform: translateY(0); }
+    to { transform: translateY(-5px); }
+}
+
+/* GPS Button */
+.btn-gps-float {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    z-index: 20;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #333;
+}

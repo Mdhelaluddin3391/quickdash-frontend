@@ -68,40 +68,50 @@
             </div>
         </div>
 
-        <div id="addr-modal" class="modal-overlay" style="display: none;">
-            <div class="modal-box">
-                <h3>Add Address</h3>
-                <form id="add-addr-form">
-                    <input type="text" id="a-line" placeholder="Flat / House / Street" required>
-                    <input type="text" id="a-city" placeholder="City" required>
-                    <input type="text" id="a-pincode" placeholder="Pincode" required>
-                    
-                    <div class="mb-3" style="margin-top: 15px; text-align: left;">
-                        <label class="form-label" style="font-weight: bold; display: block; margin-bottom: 5px;">Address Type</label>
-                        <div class="btn-group w-100" role="group" style="display: flex; gap: 5px;">
-                            <input type="radio" class="btn-check" name="address_type" id="type-home" value="HOME" checked style="display:none;">
-                            <label class="btn btn-outline-primary" for="type-home" style="flex: 1; padding: 8px; border: 1px solid #007bff; border-radius: 4px; text-align: center; cursor: pointer;">
-                                <i class="fas fa-home"></i> Home
-                            </label>
-
-                            <input type="radio" class="btn-check" name="address_type" id="type-work" value="WORK" style="display:none;">
-                            <label class="btn btn-outline-primary" for="type-work" style="flex: 1; padding: 8px; border: 1px solid #007bff; border-radius: 4px; text-align: center; cursor: pointer;">
-                                <i class="fas fa-briefcase"></i> Work
-                            </label>
-
-                            <input type="radio" class="btn-check" name="address_type" id="type-other" value="OTHER" style="display:none;">
-                            <label class="btn btn-outline-primary" for="type-other" style="flex: 1; padding: 8px; border: 1px solid #007bff; border-radius: 4px; text-align: center; cursor: pointer;">
-                                <i class="fas fa-map-pin"></i> Other
-                            </label>
-                        </div>
-                    </div>
-                    <div class="modal-actions">
-                        <button type="button" class="btn-outline" onclick="closeAddrModal()">Cancel</button>
-                        <button type="submit" class="btn-primary">Save</button>
-                    </div>
-                </form>
+       <div id="addr-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-box">
+        <h3>Address Details</h3>
+        <form id="add-addr-form">
+            <input type="hidden" id="a-lat">
+            <input type="hidden" id="a-lng">
+            
+            <div class="input-group-simple">
+                <label>Pincode</label>
+                <input type="text" id="a-pincode" placeholder="Pincode" required readonly style="background:#f9f9f9;">
             </div>
-        </div>
+
+            <div class="input-group-simple">
+                <label>City / District</label>
+                <input type="text" id="a-city" placeholder="City" required readonly style="background:#f9f9f9;">
+            </div>
+
+            <div class="input-group-simple">
+                <label>House / Flat No. (Manual)</label>
+                <input type="text" id="a-house" placeholder="Ex: Flat 401, Galaxy Apts" required autofocus>
+            </div>
+
+            <div class="input-group-simple">
+                <label>Street / Area (From Map)</label>
+                <input type="text" id="a-line" placeholder="Street Address" required>
+            </div>
+
+            <div class="mb-3" style="margin-top: 15px;">
+                <label class="form-label">Address Type</label>
+                <div class="btn-group w-100" style="display: flex; gap: 5px;">
+                    <input type="radio" class="btn-check" name="address_type" id="type-home" value="HOME" checked>
+                    <label class="btn btn-outline-primary" for="type-home">Home</label>
+                    <input type="radio" class="btn-check" name="address_type" id="type-work" value="WORK">
+                    <label class="btn btn-outline-primary" for="type-work">Work</label>
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" class="btn-outline" onclick="closeAddrModal()">Cancel</button>
+                <button type="submit" class="btn-primary">Save Address</button>
+            </div>
+        </form>
+    </div>
+</div>
     </main>
 
     <div id="footer-placeholder"></div>
